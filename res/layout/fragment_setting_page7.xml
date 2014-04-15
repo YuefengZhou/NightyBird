@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/setting_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Setting"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:id="@+id/profile_tableRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+        			android:id="@+id/profile"
+        			android:layout_width="150dp"
+        			android:layout_height="120dp"
+        			android:paddingTop = "0dp"
+        			android:src="@drawable/image_child" />
+                <TextView
+                    android:id="@+id/profileTextView"
+			    	android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+                	android:layout_marginLeft="10dp"
+                	android:gravity="left"
+                	android:maxLines="5"
+                	android:singleLine="false"
+			    	android:text=" Hi, Terry\n Gender: Female\n Age: 20-30\n Student\n Sound sleep" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/social_tableRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+			    	android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:text="Facebook account: " />
+                <EditText
+			    	android:id="@+id/accountEditText"
+			    	android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:text="andrew@cmu.edu"
+			    	android:textSize="14sp"
+			    	android:focusable="false"/>
+            </TableRow>
+            
+
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                <TextView
+			    	android:id="@+id/timeTextView"
+			    	android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:text="Threshold: " />
+                <EditText
+                    android:id="@+id/timeEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="time" >
+                    <requestFocus />
+                </EditText>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                <TextView
+			    	android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:text="Cellphone Monitor: " />
+                <ToggleButton
+                    android:id="@+id/cellphoneMonitorButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Off" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                <TextView
+			    	android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:text="Procrastination Monitor: "
+                	android:maxLines="2"
+                	android:singleLine="false"/>
+                <ToggleButton
+                    android:id="@+id/procrastinationMonitorButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Off" />
+            </TableRow>
+            
+            <TableRow
+                android:id="@+id/tableRow5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                <TextView
+                    android:id="@+id/periodTextView"
+			    	android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:text="Period: 30min" />
+                <SeekBar
+                    android:id="@+id/seekBar1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+            
+        </TableLayout>
+
+    </ScrollView>
+        
+</LinearLayout>

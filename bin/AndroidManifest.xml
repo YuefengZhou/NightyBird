@@ -5,8 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="19" />
+        android:minSdkVersion="18"
+        android:targetSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -21,6 +21,22 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.nightybird.WakeupActivity"
+            android:label="@string/title_activity_wakeup" >
+        </activity>
+        <activity
+            android:name="com.example.nightybird.SleepActivity"
+            android:label="@string/title_activity_sleep" >
+        </activity>
+        <activity
+            android:name="com.example.nightybird.StayupActivity"
+            android:label="@string/title_activity_stayup" >
+        </activity>
+        <activity
+            android:name="com.example.nightybird.StayupSettingActivity"
+            android:label="@string/title_activity_stayup_setting" >
         </activity>
     </application>
 

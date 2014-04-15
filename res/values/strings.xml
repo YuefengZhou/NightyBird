@@ -16,5 +16,10 @@
     <string name="title_activity_sleep">SleepActivity</string>
     <string name="title_activity_stayup">StayupActivity</string>
     <string name="title_activity_stayup_setting">StayupSettingActivity</string>
+    <string name="title_activity_edit_history">EditHistoryActivity</string>
+    <string name="title_activity_friends">FriendsActivity</string>
+    <string name="title_activity_history">HistoryActivity</string>
+    <string name="title_activity_report">ReportActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
 
 </resources>

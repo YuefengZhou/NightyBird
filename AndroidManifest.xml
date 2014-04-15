@@ -38,6 +38,26 @@
             android:name="com.example.nightybird.StayupSettingActivity"
             android:label="@string/title_activity_stayup_setting" >
         </activity>
+        <activity
+            android:name="com.example.nightybird.EditHistoryActivity"
+            android:label="@string/title_activity_edit_history" >
+        </activity>
+        <activity
+            android:name="com.example.nightybird.FriendsActivity"
+            android:label="@string/title_activity_friends" >
+        </activity>
+        <activity
+            android:name="com.example.nightybird.HistoryActivity"
+            android:label="@string/title_activity_history" >
+        </activity>
+        <activity
+            android:name="com.example.nightybird.ReportActivity"
+            android:label="@string/title_activity_report" >
+        </activity>
+        <activity
+            android:name="com.example.nightybird.SettingActivity"
+            android:label="@string/title_activity_setting" >
+        </activity>
     </application>
 
 </manifest>

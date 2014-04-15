@@ -11,6 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 
-public class SleepActivity extends Activity {
+public class ReportActivity extends Activity {
 
 }

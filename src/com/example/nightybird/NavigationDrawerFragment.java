@@ -55,8 +55,8 @@ public class NavigationDrawerFragment extends Fragment {
     private ListView mDrawerListView;
     private View mFragmentContainerView;
 
-    private int mCurrentSelectedPosition = 0;
-    private int mPreviousSelectedPosition = 0;
+    private static int mCurrentSelectedPosition = 0;
+    private static int mPreviousSelectedPosition = 0;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
@@ -229,6 +229,20 @@ public class NavigationDrawerFragment extends Fragment {
         // lxp added: end
 
     }
+    
+    // lxp added
+    /*
+    int getCurrentPosition (){
+    	Class<?> activityClassType = getActivity().getClass();
+    	if (activityClassType == MainActivity.class) {
+    		return 0;
+    	} else if (activityClassType == StayupActivity.class) {
+    		return 1;
+    	} else if (activityClassType == SleepActivity.class) {
+    		return 2;
+    	}
+    	return 30;
+    }*/
 
     @Override
     public void onAttach(Activity activity) {

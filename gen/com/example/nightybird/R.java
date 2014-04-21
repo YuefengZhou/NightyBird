@@ -8,6 +8,12 @@
 package com.example.nightybird;
 
 public final class R {
+    public static final class array {
+        public static final int pref_example_list_titles=0x7f070000;
+        public static final int pref_example_list_values=0x7f070001;
+        public static final int pref_sync_frequency_titles=0x7f070002;
+        public static final int pref_sync_frequency_values=0x7f070003;
+    }
     public static final class attr {
     }
     public static final class dimen {
@@ -18,14 +24,14 @@ public final class R {
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
     
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f050000;
+        public static final int activity_vertical_margin=0x7f050001;
         /** 
          Per the design guidelines, navigation drawers should be between 240dp and 320dp:
          https://developer.android.com/design/patterns/navigation-drawer.html
     
          */
-        public static final int navigation_drawer_width=0x7f040002;
+        public static final int navigation_drawer_width=0x7f050002;
     }
     public static final class drawable {
         public static final int drawer_shadow=0x7f020000;
@@ -45,104 +51,159 @@ public final class R {
         public static final int weeklystatistics=0x7f02000e;
     }
     public static final class id {
-        public static final int TextView01=0x7f08000a;
-        public static final int accountEditText=0x7f080020;
-        public static final int action_example=0x7f080030;
-        public static final int action_settings=0x7f08002f;
-        public static final int button1=0x7f08002a;
-        public static final int button2=0x7f08002b;
-        public static final int cellphoneMonitorButton=0x7f080023;
-        public static final int container=0x7f080018;
-        public static final int dateEditText=0x7f080002;
-        public static final int dateTextView=0x7f080001;
-        public static final int drawer_layout=0x7f080017;
-        public static final int editHistory_title=0x7f080000;
-        public static final int friendImg1=0x7f08000c;
-        public static final int friendImg2=0x7f08000f;
-        public static final int friendProfile1TextView=0x7f08000d;
-        public static final int friendProfile2TextView=0x7f080010;
-        public static final int friendProfile3TextView=0x7f080012;
-        public static final int friendProfile4TextView=0x7f080014;
-        public static final int historyTiltle=0x7f080015;
-        public static final int listView1=0x7f080016;
-        public static final int navigation_drawer=0x7f080019;
-        public static final int periodTextView=0x7f080026;
-        public static final int procrastinationMonitorButton=0x7f080024;
-        public static final int profile=0x7f08001d;
-        public static final int profileTextView=0x7f08001e;
-        public static final int profile_tableRow=0x7f08001c;
-        public static final int scrollView1=0x7f08001b;
-        public static final int seekBar1=0x7f080027;
-        public static final int setting_title=0x7f08001a;
-        public static final int sleepPeriodEditText=0x7f080008;
-        public static final int sleepPeriod_TextView=0x7f080007;
-        public static final int sleepTimeEditText=0x7f080004;
-        public static final int sleepTimeUnit=0x7f080009;
-        public static final int sleepTime_TextView=0x7f080003;
-        public static final int social_tableRow=0x7f08001f;
-        public static final int tableRow1=0x7f08000b;
-        public static final int tableRow2=0x7f08000e;
-        public static final int tableRow3=0x7f080011;
-        public static final int tableRow4=0x7f080013;
-        public static final int tableRow5=0x7f080025;
-        public static final int textView1=0x7f080028;
-        public static final int textView2=0x7f08002d;
-        public static final int textView3=0x7f08002e;
-        public static final int timeEditText=0x7f080022;
-        public static final int timePicker1=0x7f080029;
-        public static final int timeTextView=0x7f080021;
-        public static final int wakeupTimeEditText=0x7f080006;
-        public static final int wakeupTime_TextView=0x7f080005;
-        public static final int weekly_statistic_image=0x7f08002c;
+        public static final int TextView01=0x7f0a000b;
+        public static final int accountEditText=0x7f0a002a;
+        public static final int action_example=0x7f0a003e;
+        public static final int action_settings=0x7f0a003d;
+        public static final int advice_content1=0x7f0a001d;
+        public static final int advice_content2=0x7f0a0020;
+        public static final int advice_content3=0x7f0a0023;
+        public static final int advice_title1=0x7f0a001b;
+        public static final int advice_title2=0x7f0a001e;
+        public static final int advice_title3=0x7f0a0021;
+        public static final int button1=0x7f0a0032;
+        public static final int button2=0x7f0a0035;
+        public static final int cellphoneMonitorButton=0x7f0a002d;
+        public static final int container=0x7f0a0000;
+        public static final int dateEditText=0x7f0a0003;
+        public static final int dateTextView=0x7f0a0002;
+        public static final int drawer_layout=0x7f0a0038;
+        public static final int editHistory_title=0x7f0a0001;
+        public static final int friendImg1=0x7f0a000d;
+        public static final int friendImg2=0x7f0a0010;
+        public static final int friendProfile1TextView=0x7f0a000e;
+        public static final int friendProfile2TextView=0x7f0a0011;
+        public static final int friendProfile3TextView=0x7f0a0013;
+        public static final int friendProfile4TextView=0x7f0a0015;
+        public static final int historyTiltle=0x7f0a0016;
+        public static final int left_drawer=0x7f0a003c;
+        public static final int listView1=0x7f0a0017;
+        public static final int navigation_drawer=0x7f0a003b;
+        public static final int periodTextView=0x7f0a0030;
+        public static final int procrastinationMonitorButton=0x7f0a002e;
+        public static final int profile=0x7f0a0027;
+        public static final int profileTextView=0x7f0a0028;
+        public static final int profile_tableRow=0x7f0a0026;
+        public static final int scrollView1=0x7f0a0025;
+        public static final int seekBar1=0x7f0a0031;
+        public static final int setting_title=0x7f0a0024;
+        public static final int sleepPeriodEditText=0x7f0a0009;
+        public static final int sleepPeriod_TextView=0x7f0a0008;
+        public static final int sleepTimeEditText=0x7f0a0005;
+        public static final int sleepTimeUnit=0x7f0a000a;
+        public static final int sleepTime_TextView=0x7f0a0004;
+        public static final int sleep_wakeup_button=0x7f0a0039;
+        public static final int social_tableRow=0x7f0a0029;
+        public static final int stay_up_late_button=0x7f0a003a;
+        public static final int tableRow1=0x7f0a000c;
+        public static final int tableRow1_1=0x7f0a001c;
+        public static final int tableRow2=0x7f0a000f;
+        public static final int tableRow2_1=0x7f0a001f;
+        public static final int tableRow3=0x7f0a0012;
+        public static final int tableRow3_1=0x7f0a0022;
+        public static final int tableRow4=0x7f0a0014;
+        public static final int tableRow5=0x7f0a002f;
+        public static final int textView1=0x7f0a0033;
+        public static final int textView2=0x7f0a0036;
+        public static final int textView3=0x7f0a0037;
+        public static final int timeEditText=0x7f0a002c;
+        public static final int timePicker1=0x7f0a0034;
+        public static final int timeTextView=0x7f0a002b;
+        public static final int wakeupTimeEditText=0x7f0a0007;
+        public static final int wakeupTime_TextView=0x7f0a0006;
+        public static final int weeklyTitle=0x7f0a0018;
+        public static final int weekly_statistic_image=0x7f0a0019;
+        public static final int weekly_title=0x7f0a001a;
     }
     public static final class layout {
-        public static final int nightybird_activity_edit_history=0x7f030000;
-        public static final int nightybird_activity_friends=0x7f030001;
-        public static final int nightybird_activity_history=0x7f030002;
-        public static final int nightybird_activity_main=0x7f030003;
-        public static final int nightybird_activity_report=0x7f030004;
-        public static final int nightybird_activity_setting=0x7f030005;
-        public static final int nightybird_activity_sleep=0x7f030006;
-        public static final int nightybird_activity_stayup=0x7f030007;
-        public static final int nightybird_activity_stayup_setting=0x7f030008;
-        public static final int nightybird_activity_wakeup=0x7f030009;
-        public static final int nightybird_fragment_main_buttons=0x7f03000a;
-        public static final int nightybird_fragment_navigation_drawer=0x7f03000b;
+        public static final int activity_edit_history=0x7f030000;
+        public static final int activity_friends=0x7f030001;
+        public static final int activity_history=0x7f030002;
+        public static final int activity_report=0x7f030003;
+        public static final int activity_setting2=0x7f030004;
+        public static final int activity_sleep=0x7f030005;
+        public static final int activity_stayup=0x7f030006;
+        public static final int activity_stayup_setting=0x7f030007;
+        public static final int activity_wakeup=0x7f030008;
+        public static final int drawer_list_item=0x7f030009;
+        public static final int fragment_edit_history=0x7f03000a;
+        public static final int fragment_friends=0x7f03000b;
+        public static final int fragment_history=0x7f03000c;
+        public static final int fragment_report=0x7f03000d;
+        public static final int fragment_setting=0x7f03000e;
+        public static final int fragment_sleep2=0x7f03000f;
+        public static final int fragment_stayup=0x7f030010;
+        public static final int fragment_stayup_setting=0x7f030011;
+        public static final int fragment_wakeup=0x7f030012;
+        public static final int nightybird_activity_edit_history=0x7f030013;
+        public static final int nightybird_activity_friends=0x7f030014;
+        public static final int nightybird_activity_history=0x7f030015;
+        public static final int nightybird_activity_main=0x7f030016;
+        public static final int nightybird_activity_report=0x7f030017;
+        public static final int nightybird_activity_setting=0x7f030018;
+        public static final int nightybird_activity_stayup=0x7f030019;
+        public static final int nightybird_activity_stayup_setting=0x7f03001a;
+        public static final int nightybird_activity_wakeup=0x7f03001b;
+        public static final int nightybird_fragment_main_buttons=0x7f03001c;
+        public static final int nightybird_fragment_navigation_drawer=0x7f03001d;
     }
     public static final class menu {
-        public static final int edit_history=0x7f070000;
-        public static final int friends=0x7f070001;
-        public static final int global=0x7f070002;
-        public static final int history=0x7f070003;
-        public static final int main=0x7f070004;
-        public static final int report=0x7f070005;
-        public static final int setting=0x7f070006;
-        public static final int sleep=0x7f070007;
-        public static final int stayup=0x7f070008;
-        public static final int stayup_setting=0x7f070009;
-        public static final int wakeup=0x7f07000a;
+        public static final int edit_history=0x7f090000;
+        public static final int friends=0x7f090001;
+        public static final int global=0x7f090002;
+        public static final int history=0x7f090003;
+        public static final int main=0x7f090004;
+        public static final int report=0x7f090005;
+        public static final int setting=0x7f090006;
+        public static final int sleep=0x7f090007;
+        public static final int stayup=0x7f090008;
+        public static final int stayup_setting=0x7f090009;
+        public static final int wakeup=0x7f09000a;
     }
     public static final class string {
-        public static final int action_example=0x7f050006;
-        public static final int action_settings=0x7f050007;
-        public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f05000b;
-        public static final int navigation_drawer_close=0x7f050005;
-        public static final int navigation_drawer_open=0x7f050004;
-        public static final int sleep_wakeup_button_text=0x7f050008;
-        public static final int stay_up_late_button_text=0x7f050009;
-        public static final int title_activity_edit_history=0x7f05000f;
-        public static final int title_activity_friends=0x7f050010;
-        public static final int title_activity_history=0x7f050011;
-        public static final int title_activity_report=0x7f050012;
-        public static final int title_activity_setting=0x7f050013;
-        public static final int title_activity_sleep=0x7f05000c;
-        public static final int title_activity_stayup=0x7f05000d;
-        public static final int title_activity_stayup_setting=0x7f05000e;
-        public static final int title_activity_wakeup=0x7f05000a;
-        public static final int title_section1=0x7f050001;
-        public static final int title_section2=0x7f050002;
-        public static final int title_section3=0x7f050003;
+        public static final int action_example=0x7f060006;
+        public static final int action_settings=0x7f060007;
+        public static final int app_name=0x7f060000;
+        public static final int hello_blank_fragment=0x7f060014;
+        public static final int hello_world=0x7f06000b;
+        public static final int navigation_drawer_close=0x7f060005;
+        public static final int navigation_drawer_open=0x7f060004;
+        public static final int pref_default_display_name=0x7f06001a;
+        public static final int pref_description_social_recommendations=0x7f060018;
+        /**  Example settings for Data & Sync 
+         */
+        public static final int pref_header_data_sync=0x7f06001c;
+        /**  Strings related to Settings 
+ Example General settings 
+         */
+        public static final int pref_header_general=0x7f060016;
+        /**  Example settings for Notifications 
+         */
+        public static final int pref_header_notifications=0x7f06001f;
+        public static final int pref_ringtone_silent=0x7f060022;
+        public static final int pref_title_add_friends_to_messages=0x7f06001b;
+        public static final int pref_title_display_name=0x7f060019;
+        public static final int pref_title_new_message_notifications=0x7f060020;
+        public static final int pref_title_ringtone=0x7f060021;
+        public static final int pref_title_social_recommendations=0x7f060017;
+        public static final int pref_title_sync_frequency=0x7f06001d;
+        public static final int pref_title_system_sync_settings=0x7f06001e;
+        public static final int pref_title_vibrate=0x7f060023;
+        public static final int sleep_wakeup_button_text=0x7f060008;
+        public static final int stay_up_late_button_text=0x7f060009;
+        public static final int title_activity_edit_history=0x7f06000f;
+        public static final int title_activity_friends=0x7f060010;
+        public static final int title_activity_history=0x7f060011;
+        public static final int title_activity_report=0x7f060012;
+        public static final int title_activity_setting=0x7f060013;
+        public static final int title_activity_settings=0x7f060015;
+        public static final int title_activity_sleep=0x7f06000c;
+        public static final int title_activity_stayup=0x7f06000d;
+        public static final int title_activity_stayup_setting=0x7f06000e;
+        public static final int title_activity_wakeup=0x7f06000a;
+        public static final int title_section1=0x7f060001;
+        public static final int title_section2=0x7f060002;
+        public static final int title_section3=0x7f060003;
     }
     public static final class style {
         /** 
@@ -166,10 +227,16 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f080001;
+    }
+    public static final class xml {
+        public static final int pref_data_sync=0x7f040000;
+        public static final int pref_general=0x7f040001;
+        public static final int pref_headers=0x7f040002;
+        public static final int pref_notification=0x7f040003;
     }
 }

@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="18"
+        android:minSdkVersion="14"
         android:targetSdkVersion="18" />
 
     <application
@@ -58,6 +58,16 @@
             android:name="com.example.nightybird.SettingActivity"
             android:label="@string/title_activity_setting" >
         </activity>
+        <activity
+            android:name="com.example.nightybird.Sleep"
+            android:label="@string/title_activity_sleep" >
+        </activity>
+        <!--  
+        <activity
+            android:name="com.example.nightybird.SettingActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        -->
     </application>
 
 </manifest>

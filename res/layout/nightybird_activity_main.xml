@@ -27,6 +27,38 @@
          The drawer is given a fixed width in dp and extends the full height of
          the container.
     -->
+    
+    <!--
+	<fragment
+        android:id="@+id/main_page"
+        android:name="com.example.nightybird.MainPageFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start" />
+        -->
+    <LinearLayout
+        android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+    	android:gravity="center_horizontal"
+    	android:orientation="vertical" >
+    	
+        <Button
+        android:id="@+id/sleep_wakeup_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/sleep_wakeup_button_text"
+        android:onClick="clickHandler_sleep"  />
+        
+        <Button
+        android:id="@+id/stay_up_late_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/stay_up_late_button_text"
+        android:onClick="clickHandler_stay_up_late"  />
+    </LinearLayout> 
+    
 
     <fragment
         android:id="@+id/navigation_drawer"

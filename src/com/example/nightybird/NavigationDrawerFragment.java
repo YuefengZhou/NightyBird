@@ -6,6 +6,7 @@ import android.app.Fragment;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -55,6 +56,7 @@ public class NavigationDrawerFragment extends Fragment {
     private View mFragmentContainerView;
 
     private int mCurrentSelectedPosition = 0;
+    private int mPreviousSelectedPosition = 0;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
@@ -108,8 +110,10 @@ public class NavigationDrawerFragment extends Fragment {
                         getString(R.string.title_section3),
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
+        
         return mDrawerListView;
     }
+    
 
     public boolean isDrawerOpen() {
         return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mFragmentContainerView);
@@ -200,6 +204,29 @@ public class NavigationDrawerFragment extends Fragment {
         if (mCallbacks != null) {
             mCallbacks.onNavigationDrawerItemSelected(position);
         }
+
+        
+        // lxp added: begin
+        if (mPreviousSelectedPosition != mCurrentSelectedPosition){
+        	Class<?> activityClass;
+            switch(mCurrentSelectedPosition) {
+            	case 0:activityClass = MainActivity.class;
+            			break;
+            	case 1:activityClass = StayupActivity.class;
+    					break;
+            	case 2:activityClass = SleepActivity.class;
+    					break;
+            	default: activityClass = MainActivity.class;
+            			break;
+            }
+            mPreviousSelectedPosition = mCurrentSelectedPosition;
+        	Intent intent = new Intent(); 
+        	intent.setClass(getActivity(), activityClass); 
+        	startActivity(intent); 
+        	getActivity().finish();	// stop current activity  
+        }
+        // lxp added: end
+
     }
 
     @Override

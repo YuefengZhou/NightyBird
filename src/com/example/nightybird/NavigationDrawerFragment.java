@@ -220,10 +220,11 @@ public class NavigationDrawerFragment extends Fragment {
             			break;
             }
             mPreviousSelectedPosition = mCurrentSelectedPosition;
+            
         	Intent intent = new Intent(); 
         	intent.setClass(getActivity(), activityClass); 
         	startActivity(intent); 
-        	getActivity().finish();	// stop current activity  
+        	getActivity().finish();	// stop current activity 
         }
         // lxp added: end
 

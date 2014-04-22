@@ -1,3 +1,12 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout_stayup"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/skulllong_background"
+    tools:context="com.example.nightybird.StayupActivity"
+    tools:ignore="MergeRootFrame" >
+<!--  
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -6,6 +15,11 @@
     android:background="@drawable/skulllong_background"
     tools:context="com.example.nightybird.StayupActivity"
     tools:ignore="MergeRootFrame" >
+-->
+	<FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +34,14 @@
             android:layout_marginTop="200dp"
             android:text="Stayup Setting"
 			android:onClick="clickHandler_stayup_setting"/>
-
     </LinearLayout>
+    
+    <fragment
+        android:id="@+id/navigation_drawer"
+        android:name="com.example.nightybird.NavigationDrawerFragment"
+        android:layout_width="@dimen/navigation_drawer_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="start" />
+    
 
-</FrameLayout>
+</android.support.v4.widget.DrawerLayout>

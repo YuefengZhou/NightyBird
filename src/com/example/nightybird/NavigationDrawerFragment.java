@@ -27,7 +27,8 @@ import android.widget.Toast;
  * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
  * design guidelines</a> for a complete explanation of the behaviors implemented here.
  */
-public class NavigationDrawerFragment extends Fragment {
+public class NavigationDrawerFragment extends Fragment 
+	implements ActivityConfigurable {
 	
 	
     /**
@@ -108,6 +109,7 @@ public class NavigationDrawerFragment extends Fragment {
                         getString(R.string.title_section1),
                         getString(R.string.title_section2),
                         getString(R.string.title_section3),
+                        getString(R.string.title_section4)
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         
@@ -210,11 +212,17 @@ public class NavigationDrawerFragment extends Fragment {
         if (mPreviousSelectedPosition != mCurrentSelectedPosition){
         	Class<?> activityClass;
             switch(mCurrentSelectedPosition) {
-            	case 0:activityClass = MainActivity.class;
+            	case POSITION_MAINPAGE :activityClass = MainActivity.class;
             			break;
-            	case 1:activityClass = StayupActivity.class;
+            	case POSITION_REPORTPAGE: activityClass = ReportActivity.class;
     					break;
-            	case 2:activityClass = SleepActivity.class;
+            	case POSITION_HISTORYPAGE: activityClass = HistoryActivity.class;
+						break;
+            	case POSITION_SETTINGPAGE: activityClass = SettingActivity.class;
+						break;
+            	case POSITION_STAYUPPAGE:activityClass = StayupActivity.class;
+    					break;
+            	case POSITION_SLEEPPAGE:activityClass = SleepActivity.class;
     					break;
             	default: activityClass = MainActivity.class;
             			break;
@@ -230,19 +238,6 @@ public class NavigationDrawerFragment extends Fragment {
 
     }
     
-    // lxp added
-    /*
-    int getCurrentPosition (){
-    	Class<?> activityClassType = getActivity().getClass();
-    	if (activityClassType == MainActivity.class) {
-    		return 0;
-    	} else if (activityClassType == StayupActivity.class) {
-    		return 1;
-    	} else if (activityClassType == SleepActivity.class) {
-    		return 2;
-    	}
-    	return 30;
-    }*/
 
     @Override
     public void onAttach(Activity activity) {

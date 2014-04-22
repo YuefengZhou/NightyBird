@@ -62,12 +62,16 @@
             android:name="com.example.nightybird.Sleep"
             android:label="@string/title_activity_sleep" >
         </activity>
-        <!--  
+        <!--
         <activity
             android:name="com.example.nightybird.SettingActivity"
             android:label="@string/title_activity_settings" >
         </activity>
         -->
+        <activity
+            android:name="com.example.nightybird.BaseActivity"
+            android:label="@string/title_activity_base" >
+        </activity>
     </application>
 
 </manifest>

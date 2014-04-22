@@ -31,7 +31,7 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}*/
 		
-		// Set up the drawer.
+		// Set up the drawer
 		mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
 		
@@ -89,6 +89,7 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
         }
 	}
 
+	
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		// update the main content by replacing fragments
@@ -98,5 +99,4 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
                 .commit();
 		
 	}
-
 }

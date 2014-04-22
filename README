@@ -1,0 +1,28 @@
+NightyBird Program(R) version 1.1 04/21/2014
+
+
+--- Update ---
+- 1.1 -
+* Added Navigation Bar to main activities.
+* Changed the layout style of sleep/stayup/report/history/friends to DrawerLayout.
+* Added codes to realize switching via navigation bar between activities: sleep/stayup/report/history/setting.
+Notes: unfinished codes about data visualization have not been added to this version.
+
+- 1.0 -
+* Buil wireframes and basic APIs of all activities.
+--------------------------------------------------------------------
+
+
+--- Description ---
+The Nighty Bird application would collect user’s sleep information and provide a report to user. It can also give user healthy advice periodically. User can set a time threshold that any time after that is late. The application could record how much time the user works late very every day and gives the user reminder when the user works very late or playing with cellphone too much in late night.
+
+The basic module interaction is straightforward:  
+* A user profile module would store user’s basic information like the user’s nickname, gender and a picture.
+* A user sleep information collecting module that collects user’s sleep time and wake up time.
+* A report generating module that generate reports for user and give user healthy advices.
+* A reminder service that when some conditions meet, the system would pops reminder to the user.
+* A cellphone activity detector that checks whether user is active or not.
+
+Advanced module includes: 
+* A friend module help users manage and interact with their friends online.
+--------------------------------------------------------------------

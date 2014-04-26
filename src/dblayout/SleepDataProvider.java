@@ -48,8 +48,8 @@ public class SleepDataProvider extends ContentProvider {
 	static final String CREATE_TABLE = 
 			" CREATE TABLE " + TABLE_NAME +
 			" (SDID INTEGER PRIMARY KEY AUTOINCREMENT, " + 
-			" StartTime TEXT NOT NULL, " +
-			" EndTime TEXT NOT NULL)";
+			" StartTime INTEGER NOT NULL, " +
+			" EndTime INTEGER NOT NULL)";
 
 
 	private static class DBHelper extends SQLiteOpenHelper {

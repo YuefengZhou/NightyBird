@@ -25,12 +25,10 @@ public class SleepDataProvider extends ContentProvider {
 	static final String STARTTIME = "StartTime";
 	static final String ENDTIME = "EndTime";
 
-
 	DBHelper dbHelper;
 
 	static final int SLEEPDATATABLE = 1;
 	static final int SLEEPDATATABLE_ID = 2;
-
 
 	private static HashMap<String, String> SleepDataMap;
 
@@ -42,14 +40,14 @@ public class SleepDataProvider extends ContentProvider {
 	}
 
 	private SQLiteDatabase database;
-	static final String DATABASE_NAME = "SleepDataSB";
+	static final String DATABASE_NAME = "SleepDataDB";
 	static final String TABLE_NAME = "SleepDataTable";
 	static final int DATABASE_VERSION = 1;
 	static final String CREATE_TABLE = 
 			" CREATE TABLE " + TABLE_NAME +
 			" (SDID INTEGER PRIMARY KEY AUTOINCREMENT, " + 
-			" StartTime INTEGER NOT NULL, " +
-			" EndTime INTEGER NOT NULL)";
+			" StartTime LONG NOT NULL, " +
+			" EndTime LONG NOT NULL)";
 
 
 	private static class DBHelper extends SQLiteOpenHelper {
@@ -171,9 +169,9 @@ public class SleepDataProvider extends ContentProvider {
 	public String getType(Uri uri) {
 		switch (uriMatcher.match(uri)){
 		case SLEEPDATATABLE:
-			return "vnd.android.cursor.dir/vnd.example.studentquiz";
+			return "vnd.android.cursor.dir/vnd.example.sleepdata";
 		case SLEEPDATATABLE_ID:
-			return "vnd.android.cursor.item/vnd.example.studentquiz";
+			return "vnd.android.cursor.item/vnd.example.sleepdata";
 		default:
 			throw new IllegalArgumentException("Unsupported URI: " + uri);
 		}

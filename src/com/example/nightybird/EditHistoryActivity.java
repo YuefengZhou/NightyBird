@@ -1,18 +1,30 @@
 package com.example.nightybird;
 
+import java.util.Calendar;
+import java.util.Date;
+
+import dblayout.SleepData;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
 import android.os.Build;
 
 public class EditHistoryActivity extends Activity {
 
+	private int sdid;
+	DatePicker datePicker;
+	TimePicker timePicker1, timePicker2;
+	
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -21,6 +33,33 @@ public class EditHistoryActivity extends Activity {
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
+		}
+		
+		datePicker = (DatePicker)findViewById(R.id.datePicker);
+		timePicker1 = (TimePicker)findViewById(R.id.timePicker1);
+		timePicker2 = (TimePicker)findViewById(R.id.timePicker2);
+		
+		Bundle b = getIntent().getExtras();
+		
+		SleepData sleepData = (SleepData)b.getSerializable("SleepData");
+		if (sleepData != null) {
+			sdid = sleepData.getSdid();
+			
+//			Debugger.printDate(this, sleepData.getStart());
+//			Debugger.printDate(this, sleepData.getEnd());
+			
+//			Debugger.makeToast(this, Integer.toString(sleepData.getStart().getMonth() + 1));
+//			Debugger.makeToast(this, Integer.toString(sleepData.getStart().getDate()));
+			
+			datePicker.updateDate(sleepData.getStart().getYear() + 1900, sleepData.getStart().getMonth(), sleepData.getStart().getDate());
+			
+			timePicker1.setCurrentHour(sleepData.getStart().getHours());
+			timePicker1.setCurrentMinute(sleepData.getStart().getMinutes());
+			
+			timePicker2.setCurrentHour(sleepData.getEnd().getHours());
+			timePicker2.setCurrentMinute(sleepData.getEnd().getMinutes());
+		} else {
+			//TODO: set a default time and date
 		}
 	}
 
@@ -59,6 +98,53 @@ public class EditHistoryActivity extends Activity {
 					container, false);
 			return rootView;
 		}
+	}
+	
+	private Date getDateFromDatePicker(DatePicker datePicker){
+	    int day = datePicker.getDayOfMonth();
+	    int month = datePicker.getMonth();
+	    int year =  datePicker.getYear();
+
+	    Calendar calendar = Calendar.getInstance();
+	    calendar.set(year, month, day);
+	    
+	    return calendar.getTime();
+	}
+	
+	private Date getDateFromTimePicker(DatePicker datePicker, TimePicker timePicker) {
+		int day = datePicker.getDayOfMonth();
+	    int month = datePicker.getMonth();
+	    int year =  datePicker.getYear();
+	    int hour = timePicker.getCurrentHour();
+	    int minute = timePicker.getCurrentMinute();
+	    
+	    Calendar calendar = Calendar.getInstance();
+	    calendar.set(year, month, day, hour, minute);
+	    
+	    return calendar.getTime();
+	}
+	
+	public void onBackPressed() {
+		setResult(Activity.RESULT_CANCELED, new Intent());
+		finish();
+	}
+	
+	public void onOKButtonClick(View v) {
+		DatePicker datePicker = (DatePicker)findViewById(R.id.datePicker);
+		TimePicker timePicker1 = (TimePicker)findViewById(R.id.timePicker1);
+		TimePicker timePicker2 = (TimePicker)findViewById(R.id.timePicker2);
+		
+		//TODO: validity check for timepickers
+		
+		SleepData sleepData = new SleepData(sdid, getDateFromTimePicker(datePicker, timePicker1), getDateFromTimePicker(datePicker, timePicker2));
+		
+		Intent resultIntent = new Intent();
+		Bundle b = new Bundle();
+		b.putSerializable("SleepData", sleepData);
+		resultIntent.putExtras(b); 
+		setResult(Activity.RESULT_OK, resultIntent);
+		finish();
+		
 	}
 
 }

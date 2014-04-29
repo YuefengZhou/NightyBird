@@ -1,13 +1,17 @@
 package dblayout;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class SleepData {
+public class SleepData implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private Date start, end;
 	private int sdid;
 	
 	public SleepData() { // set default time here
-		
+		this.sdid = -1;
+		this.start = new Date();
+		this.end = new Date();
 	}
 	
 	public SleepData(int sdid, Date start, Date end) {

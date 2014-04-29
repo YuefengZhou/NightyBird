@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.example.nightybird.Debugger;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -13,29 +15,42 @@ import android.net.Uri;
 
 public class SleepDataManager {
 	private long date2Long(Date date) {
-		return date.getTime() / 1000L;
+		return date.getTime();
 	}
 	private Context context;
 
-	private static long strDateToUnixTimestamp(String dt) {
-		DateFormat formatter;
-		Date date = null;
-		long unixtime;
-		formatter = new SimpleDateFormat("dd/MM/yy");
-		try {
-			date = formatter.parse(dt);
-		} catch (ParseException ex) {
+	private static SleepDataManager instance = null;
+	
+//	private static long strDateToUnixTimestamp(String dt) {
+//		DateFormat formatter;
+//		Date date = null;
+//		long unixtime;
+//		formatter = new SimpleDateFormat("dd/MM/yy");
+//		try {
+//			date = formatter.parse(dt);
+//		} catch (ParseException ex) {
+//
+//			ex.printStackTrace();
+//		}
+//		unixtime = date.getTime() / 1000L;
+//		return unixtime;
+//	}
 
-			ex.printStackTrace();
-		}
-		unixtime = date.getTime() / 1000L;
-		return unixtime;
+	protected SleepDataManager() {
+		
 	}
-
-	public SleepDataManager(Context context) {
+	
+	public static SleepDataManager getInstance() {
+		if (instance == null)
+			instance = new SleepDataManager();
+		
+		return instance;
+	}
+	public void setContext(Context context) {
 		this.context = context;
 	}
-	boolean insertSleepData(SleepData d) {
+	
+	public boolean insertSleepData(SleepData d) {
 		ContentValues values = new ContentValues();
 
 		values.put(SleepDataProvider.STARTTIME, date2Long(d.getStart()));
@@ -45,10 +60,25 @@ public class SleepDataManager {
 
 		return true;
 	}
-	boolean deleteSleepData(int sdid) {
-		return false;
+	public int deleteSleepData(int sdid) {
+		int ret = context.getContentResolver().delete(SleepDataProvider.CONTENT_URI, "SDID=?", new String[]{Integer.toString(sdid)});
+//		Debugger.makeToast(context, Integer.toString(ret));
+		
+		return ret;
 	}
-	ArrayList<SleepData> getAllSleepData() {
+	public int updateSleepData(SleepData newSleepData) {
+		ContentValues values = new ContentValues();
+		
+		values.put(SleepDataProvider.SLEEPDATAID, newSleepData.getSdid());
+		values.put(SleepDataProvider.STARTTIME, date2Long(newSleepData.getStart()));
+		values.put(SleepDataProvider.ENDTIME, date2Long(newSleepData.getEnd()));
+		
+		int ret = context.getContentResolver().update(SleepDataProvider.CONTENT_URI, values, "SDID=?", new String[]{Integer.toString(newSleepData.getSdid())});
+		
+//		Debugger.makeToast(context, Integer.toString(ret));
+		return ret;
+	}
+	public ArrayList<SleepData> getAllSleepData() {
 		ArrayList<SleepData> res = new ArrayList<SleepData>();
 		
 		String URL = "content://com.example.provider.SleepData/sleepdata";
@@ -59,8 +89,8 @@ public class SleepDataManager {
 			do{
 				res.add(new SleepData(
 								c.getInt(c.getColumnIndex(SleepDataProvider.SLEEPDATAID)), 
-								new Date(c.getInt(c.getColumnIndex(SleepDataProvider.STARTTIME))), 
-								new Date(c.getInt(c.getColumnIndex(SleepDataProvider.ENDTIME))))
+								new Date(c.getLong(c.getColumnIndex(SleepDataProvider.STARTTIME))), 
+								new Date(c.getLong(c.getColumnIndex(SleepDataProvider.ENDTIME))))
 						);
 			} while (c.moveToNext());
 		}

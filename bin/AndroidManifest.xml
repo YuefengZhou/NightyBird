@@ -72,6 +72,10 @@
             android:name="com.example.nightybird.BaseActivity"
             android:label="@string/title_activity_base" >
         </activity>
+        
+        <provider android:name="dblayout.SleepDataProvider"
+            android:authorities="com.example.provider.SleepData">
+        </provider>
     </application>
 
 </manifest>

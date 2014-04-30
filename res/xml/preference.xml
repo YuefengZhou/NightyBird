@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-  <EditTextPreference android:title="Your Name"
-                      android:key="username"
-                      android:summary="Please provide your username"
-                      android:defaultValue="Darling"/>
-  <CheckBoxPreference android:title="Application Updates"
-                      android:defaultValue="false"
-                      android:summary="This option if selected will allow the application to check for latest versions."
-                      android:key="applicationUpdates" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:key="profile_settings"
+        android:title="Profile" >
+        <EditTextPreference
+            android:defaultValue="Darling"
+            android:key="username"
+            android:summary="Input your name if you wanna change."
+            android:title="Your Name" />
+
+        <ListPreference
+            android:defaultValue="male"
+            android:entries="@array/genders"
+            android:entryValues="@array/genders"
+            android:key="gender"
+            android:summary="Select your gender"
+            android:title="Your Gender" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="applicationUpdates"
+            android:summary="This option if selected will allow the application to check for latest versions."
+            android:title="Application Updates" />
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:key="reminder_settings"
+        android:title="Reminder Setting" >
+        <ListPreference
+            android:defaultValue="23"
+            android:entries="@array/hours"
+            android:entryValues="@array/hours"
+            android:key="threshold"
+            android:summary="Please define your stayup threshold"
+            android:title="Stayup Threshold" />
+        <ListPreference
+            android:defaultValue="30"
+            android:entries="@array/periods"
+            android:entryValues="@array/periods"
+            android:key="period"
+            android:summary="Please set the period of reminder"
+            android:title="Reminder Period" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

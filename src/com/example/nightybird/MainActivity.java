@@ -2,6 +2,7 @@ package com.example.nightybird;
 
 import dblayout.SleepData;
 import dblayout.SleepDataManager;
+import entities.PreferenceManager;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -50,6 +51,7 @@ public class MainActivity extends Activity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
         
         SleepDataManager.getInstance().setContext(this);
+        PreferenceManager.getInstance().setContext(this);
     }
     
     @Override

@@ -2,6 +2,9 @@ package entities;
 
 import java.util.Date;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 public class PreferenceManager {
 	private int stayupThreshold; // hour
 	private int remindPeriod; // in minutes
@@ -11,8 +14,10 @@ public class PreferenceManager {
 	private String gender;
 	private int age;
 	private String occupation;
-	
+	private static Context context;
 	private static PreferenceManager instance = null;
+	private static SharedPreferences sharedPref;
+	
 	private PreferenceManager() {
 		
 	}
@@ -22,7 +27,7 @@ public class PreferenceManager {
 		return instance;
 	}
 	public int getStayupThreshold() {
-		return stayupThreshold;
+		return Integer.parseInt(sharedPref.getString("threshold", "23"));
 	}
 	public void setStayupThreshold(int stayupThreshold) {
 		this.stayupThreshold = stayupThreshold;
@@ -68,5 +73,9 @@ public class PreferenceManager {
 	}
 	public void setOccupation(String occupation) {
 		this.occupation = occupation;
+	}
+	public void setContext(Context context) {
+		this.context = context;
+		sharedPref = android.preference.PreferenceManager.getDefaultSharedPreferences(context);
 	}
 }

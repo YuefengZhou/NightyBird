@@ -6,6 +6,7 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,8 +44,6 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 	@Override
 	protected void onStart() {
         super.onStart();
-		System.out.println("clicked reminder");
-		StayupReminder.test(this,"OK");
 	}	
 
 	@Override

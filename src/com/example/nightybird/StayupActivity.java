@@ -46,8 +46,10 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 	@Override
 	protected void onStart() {
         super.onStart();
+        /*
 		System.out.println("clicked reminder");
 		StayupReminder.test(this,"OK");
+		*/
 	}
 
 	@Override
@@ -106,10 +108,15 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 	}
 	
 	public void clickHandler_stayup_setting (View v){
+		/*
     	Intent intent = new Intent(); 
     	intent.setClass(this, StayupSettingActivity.class); 
     	startActivity(intent); 
     	finish();
+    	*/
+
+		System.out.println("clicked reminder");
+		StayupReminder.test(this,"OK");
 	}
 
 }

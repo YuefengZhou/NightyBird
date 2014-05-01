@@ -160,6 +160,7 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 			Toast.makeText(this, "Updated.", Toast.LENGTH_SHORT).show();
 		} else {
 			sleepDataManager.insertSleepData(sleepData);
+			updateSleepDataList();
 			Toast.makeText(this, "Added.", Toast.LENGTH_SHORT).show();
 		}
 		sleepDataAdapter.notifyDataSetChanged();
@@ -170,7 +171,7 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 		Bundle b = new Bundle();
 		b.putSerializable("SleepData", new SleepData());
 		intent.putExtras(b); 
-		startActivityForResult(intent, 0);
+		startActivityForResult(intent, 2);
 	}
 
 	@Override
@@ -249,16 +250,16 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 				arg1 = inflater.inflate(R.layout.sleepdata_item, arg2, false);
 			}
 
-			TextView sleepTime = (TextView)arg1.findViewById(R.id.textView1);
-			TextView wakeupTime = (TextView)arg1.findViewById(R.id.textView2);
+			TextView dateText = (TextView)arg1.findViewById(R.id.textView1);
+			TextView sleepTimeText = (TextView)arg1.findViewById(R.id.textView2);
 
 			SleepData sleepData = sleepDataList.get(arg0);
+			
+			String sleepTimeStr = SleepDataManager.getAbbrTime(sleepData.getStart()) + " - " + SleepDataManager.getAbbrTime(sleepData.getEnd());
+			String DateStr = SleepDataManager.getAbbrDate(sleepData.getStart());
 
-			String sleepTimeStr = new SimpleDateFormat("hh:mm, MM-dd").format(sleepData.getStart());
-			String wakeupTimeStr = new SimpleDateFormat("hh:mm, MM-dd").format(sleepData.getEnd());
-
-			sleepTime.setText("At " + sleepTimeStr + " you go to bed");
-			wakeupTime.setText("At " + wakeupTimeStr + " you wake up");
+			sleepTimeText.setText("Your sleep time: " + sleepTimeStr);
+			dateText.setText("On " + DateStr);
 
 			return arg1;
 		}

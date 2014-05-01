@@ -30,7 +30,8 @@ public class PreferenceManager {
 		return Integer.parseInt(sharedPref.getString("threshold", "23"));
 	}
 	public void setStayupThreshold(int stayupThreshold) {
-		this.stayupThreshold = stayupThreshold;
+		sharedPref.edit().putString("threshold", Integer.toString(stayupThreshold));
+		sharedPref.edit().commit();
 	}
 	public int getRemindPeriod() {
 		return remindPeriod;

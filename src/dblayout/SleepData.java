@@ -3,7 +3,7 @@ package dblayout;
 import java.io.Serializable;
 import java.util.Date;
 
-public class SleepData implements Serializable{
+public class SleepData implements Serializable, Comparable<SleepData>{
 	private static final long serialVersionUID = 1L;
 	private Date start, end;
 	private int sdid;
@@ -43,5 +43,10 @@ public class SleepData implements Serializable{
 	}
 	public void setSdid(int sdid) {
 		this.sdid = sdid;
+	}
+
+	@Override
+	public int compareTo(SleepData that) {
+		return (int)(that.getStart().getTime() - this.getStart().getTime());
 	}
 }

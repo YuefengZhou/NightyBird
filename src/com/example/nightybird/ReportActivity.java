@@ -1,5 +1,8 @@
 package com.example.nightybird;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
 import org.achartengine.chart.BarChart.Type;
@@ -8,6 +11,8 @@ import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.renderer.SimpleSeriesRenderer;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 
+import dblayout.SleepData;
+import dblayout.SleepDataManager;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -52,44 +57,52 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 	                (DrawerLayout) findViewById(R.id.drawer_layout_report));
 		}
 		
+		showRangeChart();
 		
-		/*testing code*/
-		double[] minValues = new double[] { -24, -19, -10, -1, 7, 12, 15, 14, 9, 1, -11, -16 };
-	    double[] maxValues = new double[] { 7, 12, 24, 28, 33, 35, 37, 36, 28, 19, 11, 4 };
-
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		showRangeChart();
+	}
+	
+	private void showRangeChart() {
+	    ArrayList<SleepData> sleepDataList = SleepDataManager.getInstance().getAllSleepData();
+	    Collections.sort(sleepDataList);
+	    
 	    XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
-	    RangeCategorySeries series = new RangeCategorySeries("Temperature");
-	    int length = minValues.length;
-	    for (int k = 0; k < length; k++) {
-	      series.add(minValues[k], maxValues[k]);
+	    RangeCategorySeries series = new RangeCategorySeries("Sleeping");
+	    for (int k = 0; k < 7; k++) {
+	      SleepData sleepData = sleepDataList.get(k);
+	      double hourMin = SleepDataManager.getHourDecimal(sleepData.getStart());
+	      double hourMax = SleepDataManager.getHourDecimal(sleepData.getEnd());
+	      if (hourMin > hourMax)
+	    	  hourMin -= 24.0;
+	      
+	      series.add(hourMin, hourMax); 
 	    }
 	    dataset.addSeries(series.toXYSeries());
 	    int[] colors = new int[] { Color.CYAN };
 	    XYMultipleSeriesRenderer renderer = buildBarRenderer(colors);
-	    setChartSettings(renderer, "Monthly temperature range", "Month", "Celsius degrees", 0.5, 12.5,
-	        -30, 45, Color.GRAY, Color.LTGRAY);
+	    setChartSettings(renderer, "Weekly Sleeping Statistics", "Date", "Sleeping Range", 0, 8, -6, 24, Color.GRAY, Color.LTGRAY);
 	    renderer.setBarSpacing(0.5);
 	    renderer.setXLabels(0);
 	    renderer.setYLabels(10);
-	    renderer.addXTextLabel(1, "Jan");
-	    renderer.addXTextLabel(3, "Mar");
-	    renderer.addXTextLabel(5, "May");
-	    renderer.addXTextLabel(7, "Jul");
-	    renderer.addXTextLabel(10, "Oct");
-	    renderer.addXTextLabel(12, "Dec");
-	    renderer.addYTextLabel(-25, "Very cold");
-	    renderer.addYTextLabel(-10, "Cold");
-	    renderer.addYTextLabel(5, "OK");
-	    renderer.addYTextLabel(20, "Nice");
-	    renderer.setMargins(new int[] {30, 70, 10, 0});
+	    for(int i = 1; i <= 7; i++) {
+	    	renderer.addXTextLabel(i, SleepDataManager.getAbbrDate(sleepDataList.get(7 - i).getStart()));
+	    }
+	    for(int i = -20; i < 0; i+=5) {
+	    	renderer.addYTextLabel(i, Integer.toString(i + 24));
+	    }
+	    renderer.setMargins(new int[] {30, 30, 10, 10});
 	    renderer.setYLabelsAlign(Align.RIGHT);
 	    SimpleSeriesRenderer r = renderer.getSeriesRendererAt(0);
-	    r.setDisplayChartValues(true);
 	    r.setChartValuesTextSize(12);
 	    r.setChartValuesSpacing(3);
 	    r.setGradientEnabled(true);
-	    r.setGradientStart(-20, Color.BLUE);
-	    r.setGradientStop(20, Color.GREEN);
+	    r.setGradientStart(-6, Color.BLUE);
+	    r.setGradientStop(12, Color.GREEN);
 		
 		LinearLayout layout = (LinearLayout) findViewById(R.id.chart);
 		chartView = ChartFactory.getRangeBarChartView(this, dataset, renderer, Type.DEFAULT);
@@ -99,7 +112,7 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 		
 		chartView.repaint();
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 

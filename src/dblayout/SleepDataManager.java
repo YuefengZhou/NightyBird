@@ -21,6 +21,7 @@ public class SleepDataManager {
 
 	private static SleepDataManager instance = null;
 	
+	private static String[] monthName = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 //	private static long strDateToUnixTimestamp(String dt) {
 //		DateFormat formatter;
 //		Date date = null;
@@ -96,6 +97,27 @@ public class SleepDataManager {
 		}
 
 		return res;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public static double getHourDecimal(Date date) {
+		int hour = date.getHours();
+		int minute = date.getMinutes();
+		
+		return hour + minute / 60.0;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public static String getAbbrDate(Date date) {
+		int month = date.getMonth();
+		int day = date.getDate();
+		
+		return monthName[month] + " " + Integer.toString(day);
+	}
+	
+	public static String getAbbrTime(Date date) {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+		return simpleDateFormat.format(date);
 	}
 
 }

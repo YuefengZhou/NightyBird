@@ -1,8 +1,10 @@
 package com.example.nightybird;
 
+import ws.local.StayupReminder;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,18 +13,39 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 
-public class WakeupActivity extends Activity {
+public class WakeupActivity extends Activity
+implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 
+	private NavigationDrawerFragment mNavigationDrawerFragment;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_wakeup);
 
+		/*
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
+		}*/
+		
+		// Set up the drawer
+		mNavigationDrawerFragment = (NavigationDrawerFragment)
+                getFragmentManager().findFragmentById(R.id.navigation_drawer);
+		
+		if (mNavigationDrawerFragment != null){
+			mNavigationDrawerFragment.setUp(
+	                R.id.navigation_drawer,
+	                (DrawerLayout) findViewById(R.id.drawer_layout_wakeup));
 		}
 	}
+	
+	@Override
+	protected void onStart() {
+        super.onStart();
+		System.out.println("clicked reminder");
+		StayupReminder.test(this,"OK");
+	}	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -48,6 +71,7 @@ public class WakeupActivity extends Activity {
 	 * A placeholder fragment containing a simple view.
 	 */
 	public static class PlaceholderFragment extends Fragment {
+		private static final String ARG_SECTION_NUMBER = "section_number";
 
 		public PlaceholderFragment() {
 		}
@@ -59,6 +83,23 @@ public class WakeupActivity extends Activity {
 					container, false);
 			return rootView;
 		}
+		
+		public static PlaceholderFragment newInstance(int sectionNumber) {
+            PlaceholderFragment fragment = new PlaceholderFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+	}
+
+	@Override
+	public void onNavigationDrawerItemSelected(int position) {
+		// update the main content by replacing fragments
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .commit();
 	}
 
 }

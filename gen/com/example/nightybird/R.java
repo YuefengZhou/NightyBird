@@ -48,39 +48,40 @@ public final class R {
         public static final int image_child=0x7f020008;
         public static final int skulllong=0x7f020009;
         public static final int skulllong_background=0x7f02000a;
-        public static final int sunflower=0x7f02000b;
-        public static final int sunflower_background=0x7f02000c;
-        public static final int sunflower_cropped=0x7f02000d;
-        public static final int weeklystatistics=0x7f02000e;
+        public static final int startview=0x7f02000b;
+        public static final int sunflower=0x7f02000c;
+        public static final int sunflower_background=0x7f02000d;
+        public static final int sunflower_cropped=0x7f02000e;
+        public static final int weeklystatistics=0x7f02000f;
     }
     public static final class id {
         public static final int TextView01=0x7f0a000c;
         public static final int accountEditText=0x7f0a002d;
-        public static final int action_example=0x7f0a004a;
-        public static final int action_settings=0x7f0a0049;
+        public static final int action_example=0x7f0a004b;
+        public static final int action_settings=0x7f0a004a;
         public static final int advice_content1=0x7f0a0020;
         public static final int advice_content2=0x7f0a0023;
         public static final int advice_content3=0x7f0a0026;
         public static final int advice_title1=0x7f0a001e;
         public static final int advice_title2=0x7f0a0021;
         public static final int advice_title3=0x7f0a0024;
-        public static final int button1=0x7f0a0037;
-        public static final int button2=0x7f0a0038;
+        public static final int button1=0x7f0a0038;
+        public static final int button2=0x7f0a0039;
         public static final int buttonAdd=0x7f0a0019;
         public static final int buttonOK=0x7f0a000a;
         public static final int cellphoneMonitorButton=0x7f0a0030;
         public static final int chart=0x7f0a001c;
         public static final int container=0x7f0a0000;
-        public static final int dateEditText=0x7f0a003c;
+        public static final int dateEditText=0x7f0a003d;
         public static final int datePicker=0x7f0a0003;
         public static final int dateTextView=0x7f0a0002;
-        public static final int drawer_layout=0x7f0a0044;
+        public static final int drawer_layout=0x7f0a0045;
         public static final int drawer_layout_friends=0x7f0a000b;
         public static final int drawer_layout_history=0x7f0a0016;
         public static final int drawer_layout_report=0x7f0a001a;
         public static final int drawer_layout_sleep=0x7f0a0035;
-        public static final int drawer_layout_stayup=0x7f0a0036;
-        public static final int drawer_layout_wakeup=0x7f0a0039;
+        public static final int drawer_layout_stayup=0x7f0a0037;
+        public static final int drawer_layout_wakeup=0x7f0a003a;
         public static final int editHistory_title=0x7f0a0001;
         public static final int friendImg1=0x7f0a000d;
         public static final int friendImg2=0x7f0a000f;
@@ -89,8 +90,8 @@ public final class R {
         public static final int friendProfile3TextView=0x7f0a0012;
         public static final int friendProfile4TextView=0x7f0a0014;
         public static final int historyTiltle=0x7f0a0017;
-        public static final int imageView1=0x7f0a0048;
-        public static final int left_drawer=0x7f0a0047;
+        public static final int imageView1=0x7f0a0049;
+        public static final int left_drawer=0x7f0a0048;
         public static final int list=0x7f0a0018;
         public static final int navigation_drawer=0x7f0a0015;
         public static final int periodTextView=0x7f0a0033;
@@ -101,14 +102,15 @@ public final class R {
         public static final int scrollView1=0x7f0a0028;
         public static final int seekBar1=0x7f0a0034;
         public static final int setting_title=0x7f0a0027;
-        public static final int sleepPeriodEditText=0x7f0a0042;
-        public static final int sleepPeriod_TextView=0x7f0a0041;
-        public static final int sleepTimeEditText=0x7f0a003e;
-        public static final int sleepTimeUnit=0x7f0a0043;
-        public static final int sleepTime_TextView=0x7f0a003d;
-        public static final int sleep_wakeup_button=0x7f0a0045;
+        public static final int sleepPeriodEditText=0x7f0a0043;
+        public static final int sleepPeriod_TextView=0x7f0a0042;
+        public static final int sleepTimeEditText=0x7f0a003f;
+        public static final int sleepTimeUnit=0x7f0a0044;
+        public static final int sleepTime_TextView=0x7f0a003e;
+        public static final int sleep_wakeup_button=0x7f0a0046;
         public static final int social_tableRow=0x7f0a002c;
-        public static final int stay_up_late_button=0x7f0a0046;
+        public static final int startview=0x7f0a0036;
+        public static final int stay_up_late_button=0x7f0a0047;
         public static final int tableRow1=0x7f0a0004;
         public static final int tableRow1_1=0x7f0a001f;
         public static final int tableRow2=0x7f0a0007;
@@ -119,15 +121,15 @@ public final class R {
         public static final int tableRow5=0x7f0a0032;
         public static final int textView1=0x7f0a0005;
         public static final int textView2=0x7f0a0006;
-        public static final int textView3=0x7f0a003b;
+        public static final int textView3=0x7f0a003c;
         public static final int timeEditText=0x7f0a002f;
         public static final int timePicker1=0x7f0a0008;
         public static final int timePicker2=0x7f0a0009;
         public static final int timeTextView=0x7f0a002e;
-        public static final int wakeupTimeEditText=0x7f0a0040;
-        public static final int wakeupTime_TextView=0x7f0a003f;
+        public static final int wakeupTimeEditText=0x7f0a0041;
+        public static final int wakeupTime_TextView=0x7f0a0040;
         public static final int weeklyTitle=0x7f0a001b;
-        public static final int weekly_statistic_image=0x7f0a003a;
+        public static final int weekly_statistic_image=0x7f0a003b;
         public static final int weekly_title=0x7f0a001d;
     }
     public static final class layout {
@@ -137,31 +139,33 @@ public final class R {
         public static final int activity_report=0x7f030003;
         public static final int activity_setting2=0x7f030004;
         public static final int activity_sleep=0x7f030005;
-        public static final int activity_stayup=0x7f030006;
-        public static final int activity_stayup_setting=0x7f030007;
-        public static final int activity_wakeup=0x7f030008;
-        public static final int drawer_list_item=0x7f030009;
-        public static final int fragment_edit_history=0x7f03000a;
-        public static final int fragment_friends=0x7f03000b;
-        public static final int fragment_history=0x7f03000c;
-        public static final int fragment_report=0x7f03000d;
-        public static final int fragment_setting=0x7f03000e;
-        public static final int fragment_sleep2=0x7f03000f;
-        public static final int fragment_stayup=0x7f030010;
-        public static final int fragment_stayup_setting=0x7f030011;
-        public static final int fragment_wakeup=0x7f030012;
-        public static final int nightybird_activity_edit_history=0x7f030013;
-        public static final int nightybird_activity_friends=0x7f030014;
-        public static final int nightybird_activity_history=0x7f030015;
-        public static final int nightybird_activity_main=0x7f030016;
-        public static final int nightybird_activity_report=0x7f030017;
-        public static final int nightybird_activity_setting=0x7f030018;
-        public static final int nightybird_activity_stayup=0x7f030019;
-        public static final int nightybird_activity_stayup_setting=0x7f03001a;
-        public static final int nightybird_activity_wakeup=0x7f03001b;
-        public static final int nightybird_fragment_main_buttons=0x7f03001c;
-        public static final int nightybird_fragment_navigation_drawer=0x7f03001d;
-        public static final int sleepdata_item=0x7f03001e;
+        public static final int activity_splash=0x7f030006;
+        public static final int activity_stayup=0x7f030007;
+        public static final int activity_stayup_setting=0x7f030008;
+        public static final int activity_wakeup=0x7f030009;
+        public static final int drawer_list_item=0x7f03000a;
+        public static final int fragment_edit_history=0x7f03000b;
+        public static final int fragment_friends=0x7f03000c;
+        public static final int fragment_history=0x7f03000d;
+        public static final int fragment_report=0x7f03000e;
+        public static final int fragment_setting=0x7f03000f;
+        public static final int fragment_sleep2=0x7f030010;
+        public static final int fragment_splash=0x7f030011;
+        public static final int fragment_stayup=0x7f030012;
+        public static final int fragment_stayup_setting=0x7f030013;
+        public static final int fragment_wakeup=0x7f030014;
+        public static final int nightybird_activity_edit_history=0x7f030015;
+        public static final int nightybird_activity_friends=0x7f030016;
+        public static final int nightybird_activity_history=0x7f030017;
+        public static final int nightybird_activity_main=0x7f030018;
+        public static final int nightybird_activity_report=0x7f030019;
+        public static final int nightybird_activity_setting=0x7f03001a;
+        public static final int nightybird_activity_stayup=0x7f03001b;
+        public static final int nightybird_activity_stayup_setting=0x7f03001c;
+        public static final int nightybird_activity_wakeup=0x7f03001d;
+        public static final int nightybird_fragment_main_buttons=0x7f03001e;
+        public static final int nightybird_fragment_navigation_drawer=0x7f03001f;
+        public static final int sleepdata_item=0x7f030020;
     }
     public static final class menu {
         public static final int edit_history=0x7f090000;
@@ -172,9 +176,10 @@ public final class R {
         public static final int report=0x7f090005;
         public static final int setting=0x7f090006;
         public static final int sleep=0x7f090007;
-        public static final int stayup=0x7f090008;
-        public static final int stayup_setting=0x7f090009;
-        public static final int wakeup=0x7f09000a;
+        public static final int splash=0x7f090008;
+        public static final int stayup=0x7f090009;
+        public static final int stayup_setting=0x7f09000a;
+        public static final int wakeup=0x7f09000b;
     }
     public static final class string {
         public static final int action_example=0x7f070007;
@@ -184,27 +189,27 @@ public final class R {
         public static final int hello_world=0x7f07000c;
         public static final int navigation_drawer_close=0x7f070006;
         public static final int navigation_drawer_open=0x7f070005;
-        public static final int pref_default_display_name=0x7f07001c;
-        public static final int pref_description_social_recommendations=0x7f07001a;
+        public static final int pref_default_display_name=0x7f07001d;
+        public static final int pref_description_social_recommendations=0x7f07001b;
         /**  Example settings for Data & Sync 
          */
-        public static final int pref_header_data_sync=0x7f07001e;
+        public static final int pref_header_data_sync=0x7f07001f;
         /**  Strings related to Settings 
  Example General settings 
          */
-        public static final int pref_header_general=0x7f070018;
+        public static final int pref_header_general=0x7f070019;
         /**  Example settings for Notifications 
          */
-        public static final int pref_header_notifications=0x7f070021;
-        public static final int pref_ringtone_silent=0x7f070024;
-        public static final int pref_title_add_friends_to_messages=0x7f07001d;
-        public static final int pref_title_display_name=0x7f07001b;
-        public static final int pref_title_new_message_notifications=0x7f070022;
-        public static final int pref_title_ringtone=0x7f070023;
-        public static final int pref_title_social_recommendations=0x7f070019;
-        public static final int pref_title_sync_frequency=0x7f07001f;
-        public static final int pref_title_system_sync_settings=0x7f070020;
-        public static final int pref_title_vibrate=0x7f070025;
+        public static final int pref_header_notifications=0x7f070022;
+        public static final int pref_ringtone_silent=0x7f070025;
+        public static final int pref_title_add_friends_to_messages=0x7f07001e;
+        public static final int pref_title_display_name=0x7f07001c;
+        public static final int pref_title_new_message_notifications=0x7f070023;
+        public static final int pref_title_ringtone=0x7f070024;
+        public static final int pref_title_social_recommendations=0x7f07001a;
+        public static final int pref_title_sync_frequency=0x7f070020;
+        public static final int pref_title_system_sync_settings=0x7f070021;
+        public static final int pref_title_vibrate=0x7f070026;
         public static final int sleep_wakeup_button_text=0x7f070009;
         public static final int stay_up_late_button_text=0x7f07000a;
         public static final int title_activity_base=0x7f070016;
@@ -213,8 +218,9 @@ public final class R {
         public static final int title_activity_history=0x7f070012;
         public static final int title_activity_report=0x7f070013;
         public static final int title_activity_setting=0x7f070014;
-        public static final int title_activity_settings=0x7f070017;
+        public static final int title_activity_settings=0x7f070018;
         public static final int title_activity_sleep=0x7f07000d;
+        public static final int title_activity_splash=0x7f070017;
         public static final int title_activity_stayup=0x7f07000e;
         public static final int title_activity_stayup_setting=0x7f07000f;
         public static final int title_activity_wakeup=0x7f07000b;

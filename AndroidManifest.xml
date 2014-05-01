@@ -23,6 +23,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.example.nightybird.SplashActivity"
+            android:label="@string/title_activity_splash" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
             android:name="com.example.nightybird.WakeupActivity"
             android:label="@string/title_activity_wakeup" >
         </activity>
@@ -72,9 +81,10 @@
             android:name="com.example.nightybird.BaseActivity"
             android:label="@string/title_activity_base" >
         </activity>
-        
-        <provider android:name="dblayout.SleepDataProvider"
-            android:authorities="com.example.provider.SleepData">
+
+        <provider
+            android:name="dblayout.SleepDataProvider"
+            android:authorities="com.example.provider.SleepData" >
         </provider>
     </application>
 

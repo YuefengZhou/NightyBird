@@ -47,6 +47,13 @@ public class SleepData implements Serializable, Comparable<SleepData>{
 
 	@Override
 	public int compareTo(SleepData that) {
-		return (int)(that.getStart().getTime() - this.getStart().getTime());
+		long diff = that.getStart().getTime()- this.getStart().getTime();
+		
+		if (diff > 0)
+			return 1;
+		else if (diff == 0)
+			return 0;
+		else 
+			return -1;
 	}
 }

@@ -3,6 +3,8 @@ package com.example.nightybird;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import dblayout.SleepDataManager;
+import entities.PreferenceManager;
 import entities.TimeManager;
 import android.app.Activity;
 import android.app.ActionBar;
@@ -32,6 +34,9 @@ public class SplashActivity extends Activity {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		
+		SleepDataManager.getInstance().setContext(this);
+        PreferenceManager.getInstance().setContext(this);
 	}
 	
 	@Override

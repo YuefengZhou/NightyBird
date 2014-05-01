@@ -100,9 +100,13 @@ public class SleepDataProvider extends ContentProvider {
 		default:
 			throw new IllegalArgumentException("Unknown URI " + uri);
 		}
-
+		
+		if (sortOrder == null || sortOrder == ""){
+	         sortOrder = SLEEPDATAID;
+	      }
+		
 		Cursor cursor = queryBuilder.query(database, projection, selection, 
-				selectionArgs, null, null, null);
+				selectionArgs, null, null, sortOrder);
 
 		cursor.setNotificationUri(getContext().getContentResolver(), uri);
 

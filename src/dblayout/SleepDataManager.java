@@ -84,6 +84,7 @@ public class SleepDataManager {
 		
 		String URL = "content://com.example.provider.SleepData/sleepdata";
 		Uri sleepdata = Uri.parse(URL);
+		
 		Cursor c = context.getContentResolver().query(sleepdata, null, null, null, "StartTime");
 		
 		if (c.moveToFirst()) {

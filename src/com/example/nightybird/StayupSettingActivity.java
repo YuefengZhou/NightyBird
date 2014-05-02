@@ -4,7 +4,9 @@ import entities.TimeManager;
 import ws.local.StayupReminder;
 import android.app.Activity;
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -83,11 +85,30 @@ public class StayupSettingActivity extends Activity {
 		}
 		int timeLeftForReminder = (setHour-currentHour)*60 + setMinute - currentMinute;
 		System.out.println("timeLeftForReminder: (minutes) " + timeLeftForReminder);
-		if ( timeLeftForReminder > 0 ){
+		String setFeedback = null;
+		if ( timeLeftForReminder >= 0 ){
 			System.out.println("set reminder"); 
-			StayupReminder reminder = new StayupReminder(this, "Time up to sleep");
-			reminder.startReminder(1,30); // 1 minutes
+			StayupReminder reminder = StayupReminder.getInstance();
+			reminder.initiate(this, "Time up to sleep");
+			setFeedback = "Reminder started successfully";
+			reminder.startReminder(10,10); // 1 second
+		} else {
+			setFeedback = "Time left is " + timeLeftForReminder + ". Failed to set the reminder. Reminding Time should be less than 12 hours from now.";
 		}
+		
+		//Pop an alert
+		AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage(setFeedback);
+        builder1.setCancelable(true);
+        builder1.setNegativeButton("OK",
+                new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert1 = builder1.create();
+        alert1.show();
+
 	}
 	
 	public void clickHandler_stayup_setting_cancel (View v){

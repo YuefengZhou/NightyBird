@@ -116,7 +116,7 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
     	Intent intent = new Intent(); 
     	intent.setClass(this, StayupSettingActivity.class); 
     	startActivity(intent); 
-    	finish();
+    	//finish();
 	}
 
 }

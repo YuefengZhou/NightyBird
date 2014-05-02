@@ -232,7 +232,9 @@ public class NavigationDrawerFragment extends Fragment
         	Intent intent = new Intent(); 
         	intent.setClass(getActivity(), activityClass); 
         	startActivity(intent); 
-        	getActivity().finish();	// stop current activity 
+        	if (activityClass != SettingActivity.class) {
+        		getActivity().finish();	// stop current activity 
+        	}
         }
         // lxp added: end
 

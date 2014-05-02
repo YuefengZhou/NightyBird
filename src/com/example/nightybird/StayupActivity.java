@@ -5,8 +5,12 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -108,15 +112,11 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 	}
 	
 	public void clickHandler_stayup_setting (View v){
-		/*
+		
     	Intent intent = new Intent(); 
     	intent.setClass(this, StayupSettingActivity.class); 
     	startActivity(intent); 
     	finish();
-    	*/
-
-		System.out.println("clicked reminder");
-		StayupReminder.test(this,"OK");
 	}
 
 }

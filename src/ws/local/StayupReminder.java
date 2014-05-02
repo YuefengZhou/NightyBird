@@ -17,17 +17,21 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
 public class StayupReminder {
-	static int notifyID = 0;
-    private Timer timer;
-    private TimerTask task;
+	static int notifyID = 1;
+    private static Timer timer;
+    private static TimerTask task;
+    public static int timeLauchReminder;
+    public static int intervalTimeLauchReminder;
     private static ActivityManager activityManager;
     private static NotificationManager mNotificationManager ;
     private static Activity orgActivity = null;
+    private static String message = null;
     
-	public StayupReminder (Activity activity) {
-		activityManager = (ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE);
-		mNotificationManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
+	public StayupReminder (Activity activity, String reminderMessage) {
 		orgActivity = activity;
+		activityManager = (ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE);
+		mNotificationManager = (NotificationManager) orgActivity.getSystemService(Context.NOTIFICATION_SERVICE);
+		message = reminderMessage;
 	}
 	
 	public void updateActivity (Activity activity) {
@@ -35,21 +39,35 @@ public class StayupReminder {
 	}
 	
 	public static void test(Activity activity, String message){
-		StayupReminder reminder = new StayupReminder(activity);
-		reminder.sendReminder();
-				//notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
+		StayupReminder reminder = new StayupReminder(activity, message);
+		reminder.startReminder(1,5); // 1 minutes
+		//notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
 	}
 	
-	public void startReminder(Activity activity, int time) { // time: minutes
+	public void startReminder(int time, int timeInterval) { // time: minutes
+		timeLauchReminder = time;
+		intervalTimeLauchReminder = timeInterval;
+		closeReminder();
 		timer = new Timer();
         task = new TimerTask() {
+        	int timeCounter = 0;
+        	int interval =0;
         	@Override
             public void run() {
-        		System.out.println ("timer: begin jump");
-        		sendReminder();
+        		timeCounter++;
+        		if (timeCounter>= timeLauchReminder){
+        			if (interval==0){
+        				sendReminder(message);
+        			}
+        			interval++;
+        			if (interval>=intervalTimeLauchReminder){
+        				interval = 0;
+        			}
+        		}
             }
         };
-        timer.schedule(task, time*60*1000, time*60*1000);
+        timer.schedule(task, 1*1000, 1*1000);	// check every minutes
+        //timer.schedule(task, time*60*1000, time*60*1000);
         System.out.println ("startReminder: set timer");
 	}
 	
@@ -61,34 +79,23 @@ public class StayupReminder {
 	    System.out.println ("Reminder closed");
 	}
 	
-	public void sendReminder(){
-		System.out.println("start reminder");
-		Notification notification = createNotification("Reminder: timeout");
+	public void sendReminder(String reminderMessage){
+		Notification notification = createNotification(reminderMessage);
 		// Intent notificationIntent = new Intent(activity, MainActivity.class);
 		// PendingIntent contentIntent = PendingIntent.getActivity(activity, 0, notificationIntent, 0);
-		System.out.println("built notification");
 		mNotificationManager.notify(
 	            notifyID,
 	            notification);
-		System.out.println("notify notification");
 	}
 	
-	public void updateReminder(String reminderText){
-		// mNotificationManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);  
-		
-		mNotificationManager.notify(
-	            notifyID,
-	            createNotification("Hi, timeup!"));
-	}
-	
-	public Notification createNotification(String reminderText){
+	public static Notification createNotification(String reminderText){
 		NotificationCompat.Builder mNotifyBuilder = new NotificationCompat.Builder (getActivity())
 	    .setContentTitle("NightyBird Reminder")
 	    .setContentText(reminderText)
 		.setSmallIcon(R.drawable.ic_launcher); // if there is no icon, the notification will not appear
 		
 		Notification notification = mNotifyBuilder.build();
-		notification.defaults |= Notification.DEFAULT_ALL;
+		// notification.defaults |= Notification.DEFAULT_ALL;
 		notification.defaults |= Notification.DEFAULT_SOUND;
 		notification.defaults |= Notification.DEFAULT_VIBRATE ;
 		notification.flags |= Notification.FLAG_ONGOING_EVENT;
@@ -96,7 +103,7 @@ public class StayupReminder {
 		return notification;
 	}
 	
-	public Activity getActivity(){
+	public static Activity getActivity(){
 		return orgActivity;
 	}
 	

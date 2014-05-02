@@ -9,9 +9,9 @@ public class TimeManager {
 	final static boolean DEBUG_TIME = true;
 	
 	// start from 08:00 daytimeStart should < 12 (noon)
-	final static int daytimeStart = 8; 
+	public final static int daytimeStart = 8; 
 	// start from 20:00. nighttimeStart should > 12 (noon)
-	final static int nighttimeStart = 20;
+	public final static int nighttimeStart = 20;
 
 	
 	public static void main(String[] args) {
@@ -86,12 +86,12 @@ public class TimeManager {
 		return Integer.parseInt(dateFormat.format(date));
 	}
 	
-	public int getCurrentHour(){
+	public static int getCurrentHour(){
 		Date currentDate = new Date();
 		return getHourFromDate(currentDate);
 	}
 	
-	public int getCurrentMinute(){
+	public static int getCurrentMinute(){
 		Date currentDate = new Date();
 		return getMinuteFromDate(currentDate);
 	}

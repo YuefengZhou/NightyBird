@@ -1,5 +1,7 @@
 package com.example.nightybird;
 
+import entities.TimeManager;
+import ws.local.StayupReminder;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -9,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TimePicker;
 import android.os.Build;
 
 public class StayupSettingActivity extends Activity {
@@ -22,6 +25,9 @@ public class StayupSettingActivity extends Activity {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		
+		TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker1);
+		timePicker.setIs24HourView(true);
 	}
 
 	@Override
@@ -59,6 +65,33 @@ public class StayupSettingActivity extends Activity {
 					container, false);
 			return rootView;
 		}
+	}
+	
+	public void clickHandler_stayup_setting_done (View v){
+		TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker1);
+		int setHour = timePicker.getCurrentHour();
+		int setMinute = timePicker.getCurrentMinute();
+		System.out.println("Time for reminder: " + setHour + " hour, " + setMinute + " minute");
+		
+		int currentHour = TimeManager.getCurrentHour();
+		int currentMinute = TimeManager.getCurrentMinute();
+		if (setHour<TimeManager.daytimeStart) {
+			setHour += 24;
+		}
+		if (currentHour<TimeManager.daytimeStart) {
+			currentHour += 24;
+		}
+		int timeLeftForReminder = (setHour-currentHour)*60 + setMinute - currentMinute;
+		System.out.println("timeLeftForReminder: (minutes) " + timeLeftForReminder);
+		if ( timeLeftForReminder > 0 ){
+			System.out.println("set reminder"); 
+			StayupReminder reminder = new StayupReminder(this, "Time up to sleep");
+			reminder.startReminder(1,30); // 1 minutes
+		}
+	}
+	
+	public void clickHandler_stayup_setting_cancel (View v){
+		
 	}
 
 }

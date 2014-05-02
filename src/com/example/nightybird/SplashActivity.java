@@ -68,7 +68,7 @@ public class SplashActivity extends Activity {
                 SplashActivity.splashActivityClass.finish();
             }
         };
-        timer.schedule(task, 1000*3); // jump after ? s
+        timer.schedule(task, 1000*2); // jump after ? s
         System.out.println ("main: set timer");
         
     }

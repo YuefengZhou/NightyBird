@@ -67,8 +67,12 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 		showRangeChart();
 	}
 	
-	private void showRangeChart() {
+	private boolean showRangeChart() {
 	    ArrayList<SleepData> sleepDataList = SleepDataManager.getInstance().getAllSleepData();
+	    
+	    if (sleepDataList.size() < 7)
+	    	return false;
+	    
 	    Collections.sort(sleepDataList);
 	    
 	    XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
@@ -111,6 +115,8 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 		          LayoutParams.MATCH_PARENT));
 		
 		chartView.repaint();
+		
+		return true;
 	}
 	
 	@Override

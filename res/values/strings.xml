@@ -14,16 +14,16 @@
     <string name="stay_up_late_button_text">Going to Stay up Late</string>
     <string name="title_activity_wakeup">WakeupActivity</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_sleep">SleepActivity</string>
-    <string name="title_activity_stayup">StayupActivity</string>
+    <string name="title_activity_sleep">Sleeping</string>
+    <string name="title_activity_stayup">Staying-up Late Now</string>
     <string name="title_activity_stayup_setting">StayupSettingActivity</string>
-    <string name="title_activity_edit_history">EditHistoryActivity</string>
-    <string name="title_activity_friends">FriendsActivity</string>
-    <string name="title_activity_history">HistoryActivity</string>
-    <string name="title_activity_report">ReportActivity</string>
-    <string name="title_activity_setting">SettingActivity</string>
+    <string name="title_activity_edit_history">Edit History</string>
+    <string name="title_activity_friends">Friends</string>
+    <string name="title_activity_history">History</string>
+    <string name="title_activity_report">Report</string>
+    <string name="title_activity_setting">Setting</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_base">BaseActivity</string>
-    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_splash">NightyBird</string>
 
 </resources>

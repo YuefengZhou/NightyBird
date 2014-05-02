@@ -28,12 +28,21 @@
         android:orientation="vertical" >
 
         <Button
+            android:id="@+id/button_go_to_sleep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="210dp"
+            android:text="Go to sleep"
+			android:onClick="clickHandler_go_to_sleep"/>
+
+        <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="20dp"
             android:text="Stayup Setting"
 			android:onClick="clickHandler_stayup_setting"/>
+
     </LinearLayout>
     
     <fragment

@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
@@ -88,7 +89,6 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
             return fragment;
         }
 	}
-
 	
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
@@ -99,4 +99,13 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
                 .commit();
 		
 	}
+	
+	public void clickHandler_wakeup (View v){
+    	Intent intent = new Intent(); 
+    	intent.setClass(this, WakeupActivity.class); 
+    	startActivity(intent); 
+    	this.finish();
+	}
+	
+	
 }

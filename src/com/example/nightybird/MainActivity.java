@@ -1,8 +1,14 @@
 package com.example.nightybird;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import dblayout.SleepData;
 import dblayout.SleepDataManager;
 import entities.PreferenceManager;
+import entities.TimeManager;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -88,6 +94,24 @@ public class MainActivity extends Activity
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
+    }
+    
+	@Override
+    protected void onStart() {
+        super.onStart();
+        
+        // Jump to sleep or wakeup page based on time
+        System.out.println ("main: before jump to other activity");
+        TimeManager timeManager = new TimeManager();
+        Intent initialJumpIntent = new Intent(); 
+        if (timeManager.isDaylight()){
+        	initialJumpIntent.setClass(this, WakeupActivity.class);
+        } else {
+        	initialJumpIntent.setClass(this, StayupActivity.class);
+        }
+        
+        startActivity(initialJumpIntent);
+        this.finish();
     }
 
 

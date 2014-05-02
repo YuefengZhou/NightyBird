@@ -111,12 +111,18 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
                 .commit();
 	}
 	
+	public void clickHandler_go_to_sleep (View v){
+    	Intent intent = new Intent(); 
+    	intent.setClass(this, SleepActivity.class); 
+    	startActivity(intent); 
+    	this.finish();
+	}
+	
 	public void clickHandler_stayup_setting (View v){
 		
     	Intent intent = new Intent(); 
     	intent.setClass(this, StayupSettingActivity.class); 
     	startActivity(intent); 
-    	//finish();
 	}
 
 }

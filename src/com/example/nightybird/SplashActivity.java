@@ -22,8 +22,7 @@ import android.view.ViewGroup;
 import android.os.Build;
 
 public class SplashActivity extends Activity {
-
-    public static Intent initialJumpIntent;
+	private static Intent initialJumpIntent;
     private Timer timer;
     private TimerTask task;
     public static SplashActivity splashActivityClass;
@@ -48,13 +47,16 @@ public class SplashActivity extends Activity {
         System.out.println ("main: before jump to other activity");
         TimeManager timeManager = new TimeManager();
         initialJumpIntent = new Intent(); 
+        initialJumpIntent.setClass(this, MainActivity.class);
+        /*
         if (timeManager.isDaylight()){
         	initialJumpIntent.setClass(this, WakeupActivity.class);
         } else {
         	initialJumpIntent.setClass(this, StayupActivity.class);
         }
-        //startActivity(initialJumpIntent);
-        //this.finish();
+        */
+        // startActivity(initialJumpIntent);
+        // this.finish();
         
         
         // used to show a start view

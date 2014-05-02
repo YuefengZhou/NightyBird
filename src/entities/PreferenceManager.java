@@ -11,8 +11,8 @@ public class PreferenceManager {
 	private Context context;
 	
 	private PreferenceManager() {
-		
 	}
+	
 	public static PreferenceManager getInstance() {
 		if (instance == null)
 			instance = new PreferenceManager();

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import ws.local.StayupReminder;
 import dblayout.SleepData;
 import dblayout.SleepDataManager;
 import entities.PreferenceManager;
@@ -41,25 +42,11 @@ public class SplashActivity extends Activity {
 	@Override
     protected void onStart() {
         super.onStart();
-        
-        // Jump to sleep or wakeup page based on time
-        // mainActivityClass = this;
         System.out.println ("main: before jump to other activity");
-        TimeManager timeManager = new TimeManager();
+        
+        // Jump to show a start view
         initialJumpIntent = new Intent(); 
         initialJumpIntent.setClass(this, MainActivity.class);
-        /*
-        if (timeManager.isDaylight()){
-        	initialJumpIntent.setClass(this, WakeupActivity.class);
-        } else {
-        	initialJumpIntent.setClass(this, StayupActivity.class);
-        }
-        */
-        // startActivity(initialJumpIntent);
-        // this.finish();
-        
-        
-        // used to show a start view
         splashActivityClass = this;
         timer = new Timer();
         task = new TimerTask() {
@@ -73,11 +60,22 @@ public class SplashActivity extends Activity {
         timer.schedule(task, 1000*2); // jump after 2 s
         System.out.println ("main: set timer");
         
+		// PreferenceManager includes preferrence information and user information
+        PreferenceManager preferenceManager = PreferenceManager.getInstance();
+        preferenceManager.setContext(this);
+        
+        // set reminderInterval in StayupReminder
+        StayupReminder reminder = StayupReminder.getInstance();
+        reminder.setReminderInterval(preferenceManager.getRemindPeriod());
+        
+        // set sleepMonitor TimeManager
+        TimeManager timeManager =  TimeManager.getInstance(this);
+        TimeManager.setStayupTimeThreshold(preferenceManager.getStayupThreshold());
+        timeManager.startSleepMonitor();
+        
 		// SleepDataManager is used to read and set sleep data
         SleepDataManager sleepDataManager = SleepDataManager.getInstance();
         sleepDataManager.setContext(this);
-		// PreferenceManager includes preferrence information and user information
-        PreferenceManager.getInstance().setContext(this);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         // Initiate sleep data
         if (sleepDataManager.getAllSleepData().size() < 7){

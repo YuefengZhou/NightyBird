@@ -91,7 +91,7 @@ public class StayupSettingActivity extends Activity {
 			StayupReminder reminder = StayupReminder.getInstance();
 			reminder.initiate(this, "Time up to sleep");
 			setFeedback = "Reminder started successfully";
-			reminder.startReminder(10,10); // 1 second
+			reminder.startStayuplateReminder(timeLeftForReminder); // minutes
 		} else {
 			setFeedback = "Time left is " + timeLeftForReminder + ". Failed to set the reminder. Reminding Time should be less than 12 hours from now.";
 		}
@@ -111,8 +111,9 @@ public class StayupSettingActivity extends Activity {
 
 	}
 	
+	/*
 	public void clickHandler_stayup_setting_cancel (View v){
 		
-	}
+	}*/
 
 }

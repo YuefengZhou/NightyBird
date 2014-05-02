@@ -6,8 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.example.nightybird.Debugger;
-
+import entities.Debugger;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -22,20 +21,6 @@ public class SleepDataManager {
 	private static SleepDataManager instance = null;
 	
 	private static String[] monthName = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-//	private static long strDateToUnixTimestamp(String dt) {
-//		DateFormat formatter;
-//		Date date = null;
-//		long unixtime;
-//		formatter = new SimpleDateFormat("dd/MM/yy");
-//		try {
-//			date = formatter.parse(dt);
-//		} catch (ParseException ex) {
-//
-//			ex.printStackTrace();
-//		}
-//		unixtime = date.getTime() / 1000L;
-//		return unixtime;
-//	}
 
 	protected SleepDataManager() {
 		
@@ -52,6 +37,8 @@ public class SleepDataManager {
 	}
 	
 	public boolean insertSleepData(SleepData d) {
+		adjustSleepData(d);
+		
 		ContentValues values = new ContentValues();
 
 		values.put(SleepDataProvider.STARTTIME, date2Long(d.getStart()));
@@ -68,6 +55,8 @@ public class SleepDataManager {
 		return ret;
 	}
 	public int updateSleepData(SleepData newSleepData) {
+		adjustSleepData(newSleepData);
+		
 		ContentValues values = new ContentValues();
 		
 		values.put(SleepDataProvider.SLEEPDATAID, newSleepData.getSdid());
@@ -119,6 +108,12 @@ public class SleepDataManager {
 	public static String getAbbrTime(Date date) {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
 		return simpleDateFormat.format(date);
+	}
+	
+	public static void adjustSleepData(SleepData sleepData) {
+		if (sleepData.getStart().getTime() - sleepData.getEnd().getTime() >= 0) {
+			sleepData.getEnd().setDate(sleepData.getStart().getDate() + 1);
+		}
 	}
 
 }

@@ -11,6 +11,7 @@ import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.renderer.SimpleSeriesRenderer;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 
+import ws.local.ReportServiceClient;
 import dblayout.SleepData;
 import dblayout.SleepDataManager;
 import android.app.Activity;
@@ -28,6 +29,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.os.Build;
 
 public class ReportActivity extends Activity 
@@ -37,6 +39,9 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 	
 	private GraphicalView chartView;
 	
+	ArrayList<SleepData> sleepDataList = null;
+    
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -59,6 +64,12 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 		
 		showRangeChart();
 		
+		TextView adviceText = (TextView)findViewById(R.id.weeklyAdviceTextView);
+//		ArrayList<SleepData> oneDayList = new ArrayList<SleepData>();
+//		oneDayList.add(sleepDataList.get(0));
+		ReportServiceClient client = new ReportServiceClient();
+		client.setTextViewToUpdate(adviceText);
+		client.execute(sleepDataList);
 	}
 	
 	@Override
@@ -68,7 +79,7 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 	}
 	
 	private boolean showRangeChart() {
-	    ArrayList<SleepData> sleepDataList = SleepDataManager.getInstance().getAllSleepData();
+	    sleepDataList = SleepDataManager.getInstance().getAllSleepData();
 	    
 	    if (sleepDataList.size() < 7)
 	    	return false;

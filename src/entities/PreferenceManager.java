@@ -6,17 +6,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class PreferenceManager {
-	private int stayupThreshold; // hour
-	private int remindPeriod; // in minutes
-	private boolean isGoingtoStayup;
-	private boolean isStayingup;
-	private String username;
-	private String gender;
-	private int age;
-	private String occupation;
-	private static Context context;
 	private static PreferenceManager instance = null;
 	private static SharedPreferences sharedPref;
+	private Context context;
 	
 	private PreferenceManager() {
 		
@@ -34,47 +26,28 @@ public class PreferenceManager {
 		sharedPref.edit().commit();
 	}
 	public int getRemindPeriod() {
-		return remindPeriod;
+		return Integer.parseInt(sharedPref.getString("period", "30"));
 	}
 	public void setRemindPeriod(int remindPeriod) {
-		this.remindPeriod = remindPeriod;
-	}
-	public boolean isGoingtoStayup() {
-		return isGoingtoStayup;
-	}
-	public void setGoingtoStayup(boolean isGoingtoStayup) {
-		this.isGoingtoStayup = isGoingtoStayup;
-	}
-	public boolean isStayingup() {
-		return isStayingup;
-	}
-	public void setStayingup(boolean isStayingup) {
-		this.isStayingup = isStayingup;
+		sharedPref.edit().putString("period", Integer.toString(remindPeriod));
+		sharedPref.edit().commit();
 	}
 	public String getUsername() {
-		return username;
+		return sharedPref.getString("name", "Darling");
 	}
 	public void setUsername(String username) {
-		this.username = username;
+		sharedPref.edit().putString("name", username);
+		sharedPref.edit().commit();
 	}
-	public String getGender() {
-		return gender;
+	public String getReportServiceAddress() {
+		return sharedPref.getString("service_address", "");
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
-	public String getOccupation() {
-		return occupation;
-	}
-	public void setOccupation(String occupation) {
-		this.occupation = occupation;
-	}
+//	public String getGender() {
+//		return gender;
+//	}
+//	public void setGender(String gender) {
+//		this.gender = gender;
+//	}
 	public void setContext(Context context) {
 		this.context = context;
 		sharedPref = android.preference.PreferenceManager.getDefaultSharedPreferences(context);

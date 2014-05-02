@@ -6,7 +6,7 @@
         android:title="Profile" >
         <EditTextPreference
             android:defaultValue="Darling"
-            android:key="username"
+            android:key="name"
             android:summary="Input your name if you wanna change."
             android:title="Your Name" />
 
@@ -18,11 +18,6 @@
             android:summary="Select your gender"
             android:title="Your Gender" />
 
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="applicationUpdates"
-            android:summary="This option if selected will allow the application to check for latest versions."
-            android:title="Application Updates" />
     </PreferenceCategory>
     
     <PreferenceCategory
@@ -44,4 +39,13 @@
             android:title="Reminder Period" />
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="network_setting"
+        android:title="Network Setting" >
+        <EditTextPreference
+            android:defaultValue="http://128.237.214.190:8080/NightyBird_Server/"
+            android:key="service_address"
+            android:summary="Please set up your report service"
+            android:title="Report Service Address" />
+    </PreferenceCategory>
 </PreferenceScreen>

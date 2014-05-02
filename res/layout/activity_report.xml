@@ -52,88 +52,11 @@
 		android:textSize="16sp"
         android:textStyle="bold|italic"/>
 
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
-
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-            <TextView
-                android:id="@+id/advice_title1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Food" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow1_1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
-            <TextView
-                android:id="@+id/advice_content1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:gravity="left"
-                android:maxLines="2"
-                android:singleLine="false"
-                android:text="Sweet, Lemon and apple will help you a lot." />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-            <TextView
-                android:id="@+id/advice_title2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Health Products"/>
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow2_1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
-            <TextView
-                android:id="@+id/advice_content2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:gravity="left"
-                android:maxLines="2"
-                android:singleLine="false"
-                android:text="Have you tried vitamin C when stay up late?" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-            <TextView
-                android:id="@+id/advice_title3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Others" />
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow3_1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
-            <TextView
-                android:id="@+id/advice_content3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:gravity="left"
-                android:maxLines="2"
-                android:singleLine="false"
-                android:text="Moisturizer is needed for your skin, sweet." />
-        </TableRow>
-    </TableLayout>
+    <TextView
+        android:id="@+id/weeklyAdviceTextView"
+        android:text="Weekly Advice Loading..." 
+        android:layout_width="match_parent"
+        android:layout_height="80dp"/>
 
 </LinearLayout>
 

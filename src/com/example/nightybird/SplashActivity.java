@@ -1,8 +1,11 @@
 package com.example.nightybird;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import dblayout.SleepData;
 import dblayout.SleepDataManager;
 import entities.PreferenceManager;
 import entities.TimeManager;
@@ -34,9 +37,6 @@ public class SplashActivity extends Activity {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
-		
-		SleepDataManager.getInstance().setContext(this);
-        PreferenceManager.getInstance().setContext(this);
 	}
 	
 	@Override
@@ -68,9 +68,38 @@ public class SplashActivity extends Activity {
                 SplashActivity.splashActivityClass.finish();
             }
         };
-        timer.schedule(task, 1000*2); // jump after ? s
+        timer.schedule(task, 1000*2); // jump after 2 s
         System.out.println ("main: set timer");
         
+		// SleepDataManager is used to read and set sleep data
+        SleepDataManager sleepDataManager = SleepDataManager.getInstance();
+        sleepDataManager.setContext(this);
+		// PreferenceManager includes preferrence information and user information
+        PreferenceManager.getInstance().setContext(this);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        // Initiate sleep data
+        if (sleepDataManager.getAllSleepData().size() < 7){
+        	try {
+    			sleepDataManager.insertSleepData( new SleepData
+    					(format.parse("2014-04-26 23:55"), format.parse("2014-04-26 6:30") ));
+    			sleepDataManager.insertSleepData( new SleepData
+    	        		(format.parse("2014-04-26 23:58"), format.parse("2014-04-27 6:02") ));
+    	        sleepDataManager.insertSleepData( new SleepData
+    	        		(format.parse("2014-04-28 00:13"), format.parse("2014-04-28 6:07") ));
+    	        sleepDataManager.insertSleepData( new SleepData
+    	        		(format.parse("2014-04-28 23:58"), format.parse("2014-04-29 5:45") ));
+    	        sleepDataManager.insertSleepData( new SleepData
+    	        		(format.parse("2014-04-30 00:15"), format.parse("2014-04-30 6:21") ));
+    	        sleepDataManager.insertSleepData( new SleepData
+    	        		(format.parse("2014-05-01 01:22"), format.parse("2014-05-01 7:22") ));
+    	        sleepDataManager.insertSleepData( new SleepData
+    	        		(format.parse("2014-05-01 23:22"), format.parse("2014-05-02 6:10") ));
+    	        System.out.println ("main: set sleep data");
+    		} catch (ParseException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}	
+        }
     }
 	
     @Override

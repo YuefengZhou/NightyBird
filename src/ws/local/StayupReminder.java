@@ -32,8 +32,8 @@ public class StayupReminder {
     private static Activity orgActivity = null;
     private static String message = null;
     
-    private void stayupReminder () {
-    	
+    @SuppressWarnings("unused")
+	private void stayupReminder () {
     }
     
     public static StayupReminder getInstance() {

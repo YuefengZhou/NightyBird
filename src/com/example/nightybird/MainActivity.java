@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import dblayout.SleepData;
 import dblayout.SleepDataManager;
 import entities.PreferenceManager;
 import entities.TimeManager;

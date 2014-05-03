@@ -43,13 +43,9 @@ public class ReportServiceClient extends AsyncTask<ArrayList<SleepData>, Void, S
 		uri.append(PreferenceManager.getInstance().getUsername());
 		
 		for(int i = 0; i < 7; i++) {
-			if (sleepDataList.get(i).getStart().getTime() - sleepDataList.get(i).getEnd().getTime() >= 0) {
-				System.out.println("ERRORRRRRR: " + i);
-			}
 			uri.append("&start" + Integer.toString(i+1) + "=" + sleepDataList.get(i).getStart().getTime());
 			uri.append("&end" + Integer.toString(i+1) + "=" + sleepDataList.get(i).getEnd().getTime());
 		}
-		System.out.println(uri.toString());
 		return getReport(uri.toString());
 	}
 	public String getReport(String uri) {
@@ -60,11 +56,11 @@ public class ReportServiceClient extends AsyncTask<ArrayList<SleepData>, Void, S
 		try {
 			response = httpClient.execute(httpGet);
 		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}
 		int code = response.getStatusLine().getStatusCode();
 		if (code == 200) {
@@ -72,32 +68,26 @@ public class ReportServiceClient extends AsyncTask<ArrayList<SleepData>, Void, S
 			try {
 				is = response.getEntity().getContent();
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return null;
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return null;
 			}
 			String result = convertStreamToString(is);
-			System.out.println("------------------");
-			System.out.println(result);
 			try {
 				myObject = new JSONObject(result);
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return null;
 			}
 		}
-		System.out.println("--------------------");
-		System.out.println(myObject);
 		try {
 			return myObject.getString("report");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}
-		
-		return null;
 	}
 	
 	private String convertStreamToString(InputStream is) {
@@ -134,7 +124,10 @@ public class ReportServiceClient extends AsyncTask<ArrayList<SleepData>, Void, S
 	}
 	
 	protected void onPostExecute(String result) {
-		textViewToUpdate.setText(result);
+		if (result == null)
+			textViewToUpdate.setText("Report Service Problem: please check your server ip setting or remote server!");
+		else
+			textViewToUpdate.setText(result);
     }
 
 	public void setTextViewToUpdate(TextView textViewToUpdate) {

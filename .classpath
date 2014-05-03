@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="/Users/zhouyuefeng/Documents/NightyBird 16270501/achartengine-1.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/zhouyuefeng/Documents/NightyBird/achartengine-1.1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Users/zhouyuefeng/android-sdks/extras/android/support/v4/android-support-v4.jar"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="src" path="src"/>

@@ -38,13 +38,47 @@ When the user is staying up very late, NightyBird will send notifications to the
 
 Users can view a daily report or a weekly report. The weekly report contains a range chart that makes it look more intuitive. In addition to the range chart, some suggestions are also included like sports advices or diet advices. These suggestions are fetched by a web service. The NightyBird application send user's sleep data to our server, the server responses with these suggestions.
 
-class diagram for different packages
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=6in,height=3in]{ClassDiagramForAcitivites}
+\end{center}
+\caption[Class Diagram for Acitivites]{Class Diagram for Acitivites}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=3in]{ClassDiagramForDB}
+\end{center}
+\caption[Class Diagram for Database Layout]{Class Diagram for Database Layout}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=6in,height=3in]{ClassDiagramForEntities}
+\end{center}
+\caption[Class Diagram for Entites]{Class Diagram for Entities}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=5in,height=2in]{ClassDiagramForWebService}
+\end{center}
+\caption[Class Diagram for Web Service]{Class Diagram for Web Service}
+\end{figure}
+
+You can go to doc/figures for class diagrams of higher resolution.
 
 \chapter{User Interfaces}
 We have four main views: main, report, history and settings views and a navigation drawer fragment that user can use to navigate between the four views. A preference fragment is attached to setting activity and a history editor activity is triggered by the history activity. 
 
 \chapter{Main Page and Reminder}
 Main view can present different activities based on local time on android phones. While WakeupActivity appears on the main page in daylight, StayupActivity occupies the main page after the stay-up-late threshold time at night. If users click "go to sleep" button in StayupActivity, main page shows SleepActivity. If user click "I am waken up" button, main page shows WakeupActivity. 
+
+\section{TimeManager}
+TimeManager realized singleton pattern. It includes a series methods to analyze current time and some a methods to start Sleep Monitor. Sleep Monitor is running as a thread and give notification when it is time to sleep.
+
+\section{StayupReminder}
+StayupReminder realized singleton pattern. It includes methods to give notification on the phone, which we called reminder. Reminder could include sound, vibration and text. Users can set StayupReminder in StayupActivity, indicating when to terminate stay up late. Also, StayupReminder could be reused by TimeManager to implement Sleep Monitor.
 
 \chapter{Report}
 On the report page, the NightyBird application presents user a weekly report as long as the user has data of at least 7 days. The report contains a range chart and a report paragraph.
@@ -122,16 +156,10 @@ We have a singleton PreferenceManager which provides interfaces to other activit
 \section{Multiple Resolution Support}
 
 \section{Start View}
-Start View is controlled in SplashActivity. When the app runs, SplashActivity is created and started. It creates an intent to switch to main activities in few seconds. Before switching to other activity, SplashActivity do initiating works including reading preferrence from PreferenceManager, configuring StayupReminder and TimeManager, inserting simulation data (used only for debug and demo). 
+Start View is controlled in SplashActivity. When the app runs, SplashActivity is created and started. It creates an intent to switch to main activities in few seconds. Before switching to other activity, SplashActivity do initiating works including reading preference from PreferenceManager, configuring StayupReminder and TimeManager, inserting simulation data (used only for debug and demo). 
 
 \section{Debugger}
 We have a debugger class that makes toast anywhere we want. We use this to debug our application.
-
-\section{TimeManager}
-TimeManager realized singleton pattern. It includes a series methods to analyze current time and some a methods to start Sleep Monitor. Sleep Monitor is running as a thread and give notification when it is time to sleep.
-
-\section{StayupReminder}
-StayupReminder realized singleton pattern. It includes methods to give notification on the phone, which we called reminder. Reminder could include sound, vibration and text. Users can set StayupReminder in StayupActivity, indicating when to terminate stay up late. Also, StayupReminder could be reused by TimeManager to implement Sleep Monitor.
 
 
 \end{document}

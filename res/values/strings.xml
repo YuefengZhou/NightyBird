@@ -12,6 +12,9 @@
     <string name="action_settings">Settings</string>
     <string name="sleep_wakeup_button_text">Going to Sleep Now</string>
     <string name="stay_up_late_button_text">Going to Stay up Late</string>
+    <string name="stay_up_late_setting_textview1">I am going to stay up until:</string>
+    <string name="stay_up_late_setting_button1">Done</string>
+    <string name="wakeup_button_text">I am waken up</string>
     <string name="title_activity_wakeup">WakeupActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_sleep">Sleeping</string>

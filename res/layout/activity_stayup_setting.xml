@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="-20dp"
             android:layout_marginTop="60dp"
-            android:text="I am going to stay up until:"
+            android:text="@string/stay_up_late_setting_textview1"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TimePicker
@@ -38,7 +38,7 @@
                 android:id="@+id/button1"
                 android:layout_width="120dp"
                 android:layout_height="76dp"
-                android:text="Done"
+                android:text="@string/stay_up_late_setting_button1"
                 android:onClick="clickHandler_stayup_setting_done" />
 			
             <!--  

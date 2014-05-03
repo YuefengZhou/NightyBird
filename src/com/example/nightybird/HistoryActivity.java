@@ -1,17 +1,12 @@
 package com.example.nightybird;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-import dblayout.SleepData;
-import dblayout.SleepDataManager;
+import entities.SleepData;
+import entities.SleepDataManager;
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,14 +18,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.os.Build;
 
 public class HistoryActivity extends Activity 
 implements NavigationDrawerFragment.NavigationDrawerCallbacks{
@@ -50,12 +42,10 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_history);
 
-		/*
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
-		 */
 
 		// Set up the drawer
 		mNavigationDrawerFragment = (NavigationDrawerFragment)
@@ -74,15 +64,6 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 		listView.setAdapter(sleepDataAdapter);
 
 		registerForContextMenu(listView);
-		//		listView.setOnItemClickListener(new OnItemClickListener() {
-		//
-		//			@Override
-		//			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-		//					long arg3) {
-		//				openContextMenu(listView);
-		//			}
-		//		});
-
 	}
 	
 	public void updateSleepDataList() {
@@ -94,7 +75,6 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 			ContextMenuInfo menuInfo) {
 
 		super.onCreateContextMenu(menu, v, menuInfo);
-		AdapterContextMenuInfo info = (AdapterContextMenuInfo) menuInfo;
 
 		menu.setHeaderTitle("Options");
 		menu.add(1, 1, 1, "Edit");
@@ -122,18 +102,17 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 
 		int position = (int)info.id;
 		switch(itemId) {
-		case 1:
+		case 1: /* Edit Item */
 			Intent intent = new Intent(HistoryActivity.this, EditHistoryActivity.class);
 			Bundle b = new Bundle();
 			b.putSerializable("SleepData", sleepDataList.get(position));
-//			b.putInt("Mode", 1);
 			intent.putExtras(b); 
 			startActivityForResult(intent, 1);
 			break;
-		case 2:
+		case 2: /* Delete item */
 			deleteItem(position);
 			break;
-		case 3:
+		case 3: /* Cancel */
 			break;
 		default:
 			break;
@@ -151,14 +130,11 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 		if (resultCode != Activity.RESULT_OK || sleepData == null)
 			return;
 		
-//		Debugger.printDate(this, sleepData.getStart());
-//		Debugger.printDate(this, sleepData.getEnd());
-		
-		if (requestCode == 1) {
+		if (requestCode == 1) { /* return from an update */
 			sleepDataManager.updateSleepData(sleepData);
 			updateSleepDataList();
 			Toast.makeText(this, "Updated.", Toast.LENGTH_SHORT).show();
-		} else {
+		} else { /* return from an add */
 			sleepDataManager.insertSleepData(sleepData);
 			updateSleepDataList();
 			Toast.makeText(this, "Added.", Toast.LENGTH_SHORT).show();
@@ -222,29 +198,26 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 
 	}
 
+	/* adapter for the list view */
 	public class SleepDataAdapter extends BaseAdapter {
 
 		@Override
 		public int getCount() {
-			// TODO Auto-generated method stub
 			return sleepDataList.size();
 		}
 
 		@Override
 		public SleepData getItem(int arg0) {
-			// TODO Auto-generated method stub
 			return sleepDataList.get(arg0);
 		}
 
 		@Override
 		public long getItemId(int arg0) {
-			// TODO Auto-generated method stub
 			return arg0;
 		}
 
 		@Override
 		public View getView(int arg0, View arg1, ViewGroup arg2) {
-
 			if(arg1==null) {
 				LayoutInflater inflater = (LayoutInflater) HistoryActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				arg1 = inflater.inflate(R.layout.sleepdata_item, arg2, false);

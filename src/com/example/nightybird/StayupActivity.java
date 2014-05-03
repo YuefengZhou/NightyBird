@@ -1,23 +1,16 @@
 package com.example.nightybird;
 
-import ws.local.StayupReminder;
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 
 public class StayupActivity extends Activity 
 implements NavigationDrawerFragment.NavigationDrawerCallbacks{
@@ -50,10 +43,6 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 	@Override
 	protected void onStart() {
         super.onStart();
-        /*
-		System.out.println("clicked reminder");
-		StayupReminder.test(this,"OK");
-		*/
 	}
 
 	@Override
@@ -104,7 +93,6 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
-		// TODO Auto-generated method stub
 		FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))

@@ -1,9 +1,6 @@
 package com.example.nightybird;
 
-import com.example.nightybird.MainActivity.PlaceholderFragment;
-
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
@@ -14,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 
 public class SleepActivity extends Activity 
 implements NavigationDrawerFragment.NavigationDrawerCallbacks{
@@ -26,11 +22,10 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sleep);
 
-		/*
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
-		}*/
+		}
 		
 		// Set up the drawer
 		mNavigationDrawerFragment = (NavigationDrawerFragment)

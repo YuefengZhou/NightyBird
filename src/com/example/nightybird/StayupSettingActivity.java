@@ -1,9 +1,8 @@
 package com.example.nightybird;
 
+import entities.StayupReminder;
 import entities.TimeManager;
-import ws.local.StayupReminder;
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
@@ -14,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TimePicker;
-import android.os.Build;
 
 public class StayupSettingActivity extends Activity {
 
@@ -110,10 +108,4 @@ public class StayupSettingActivity extends Activity {
         alert1.show();
 
 	}
-	
-	/*
-	public void clickHandler_stayup_setting_cancel (View v){
-		
-	}*/
-
 }

@@ -1,13 +1,12 @@
 package entities;
 
-import java.util.Date;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 
 public class PreferenceManager {
 	private static PreferenceManager instance = null;
 	private static SharedPreferences sharedPref;
+	@SuppressWarnings("unused")
 	private Context context;
 	
 	private PreferenceManager() {
@@ -42,12 +41,13 @@ public class PreferenceManager {
 	public String getReportServiceAddress() {
 		return sharedPref.getString("service_address", "");
 	}
-//	public String getGender() {
-//		return gender;
-//	}
-//	public void setGender(String gender) {
-//		this.gender = gender;
-//	}
+	public String getGender() {
+		return sharedPref.getString("gender", "male");
+	}
+	public void setGender(String gender) {
+		sharedPref.edit().putString("gender", gender);
+		sharedPref.edit().commit();
+	}
 	public void setContext(Context context) {
 		this.context = context;
 		sharedPref = android.preference.PreferenceManager.getDefaultSharedPreferences(context);

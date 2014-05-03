@@ -1,8 +1,6 @@
 package com.example.nightybird;
 
-import ws.local.StayupReminder;
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
@@ -12,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 
 public class WakeupActivity extends Activity
 implements NavigationDrawerFragment.NavigationDrawerCallbacks{

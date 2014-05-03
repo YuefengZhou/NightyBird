@@ -29,7 +29,7 @@
         android:id="@+id/TextView01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Report"
+        android:text="@string/report_title"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -37,7 +37,7 @@
         android:id="@+id/weeklyTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Weekly Statistics"
+        android:text="@string/weekly_stat"
 		android:textSize="16sp"
         android:textStyle="bold|italic"/>
 
@@ -48,13 +48,13 @@
         android:id="@+id/weekly_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Advice"
+        android:text="@string/advice_title"
 		android:textSize="16sp"
         android:textStyle="bold|italic"/>
 
     <TextView
         android:id="@+id/weeklyAdviceTextView"
-        android:text="Weekly Advice Loading..." 
+        android:text="@string/weekly_advice_loading" 
         android:layout_width="match_parent"
         android:layout_height="80dp"/>
 

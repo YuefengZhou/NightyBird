@@ -36,7 +36,6 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="200dp"
-            android:text="How are you doing today?"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 	
         <TextView
@@ -46,7 +45,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
-            android:text="Do you have a good sleep yesterday?"
+            android:text="@string/daily_report_title"
             android:textAppearance="?android:attr/textAppearanceLarge" />
         
         <TextView
@@ -56,7 +55,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
-            android:text="Loading your daily report..."
+            android:text="@string/loading_report"
             android:textAppearance="?android:attr/textAppearanceLarge" />
         
         <Button
@@ -64,7 +63,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Go to sleep early"/>
+            android:text="@string/go_to_sleep_early"
+            android:onClick="onClickGotoSleep"/>
 
     </LinearLayout>
     

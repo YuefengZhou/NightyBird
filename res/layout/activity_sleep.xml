@@ -32,9 +32,9 @@
             android:id="@+id/button_wakeup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="210dp"
+            android:layout_marginTop="410dp"
             android:text="@string/wakeup_button_text"
-			android:onClick="clickHandler_wakeup"/>
+			android:onClick="onClickWakeup"/>
         
     </LinearLayout>
     

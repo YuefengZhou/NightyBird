@@ -96,7 +96,7 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 		
 	}
 	
-	public void clickHandler_wakeup (View v){
+	public void onClickWakeup (View v){
 		PreferenceManager.getInstance().checkoutSleep();
     	Intent intent = new Intent(); 
     	intent.setClass(this, WakeupActivity.class); 

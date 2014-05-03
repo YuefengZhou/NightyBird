@@ -100,7 +100,7 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
                 .commit();
 	}
 	
-	public void clickHandler_go_to_sleep (View v){
+	public void onClickeGotoSleep (View v){
 		PreferenceManager.getInstance().checkinSleep();
     	Intent intent = new Intent(); 
     	intent.setClass(this, SleepActivity.class); 
@@ -108,7 +108,7 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
     	this.finish();
 	}
 	
-	public void clickHandler_stayup_setting (View v){
+	public void onClickStayupSetting (View v){
 		
     	Intent intent = new Intent(); 
     	intent.setClass(this, StayupSettingActivity.class); 

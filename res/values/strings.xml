@@ -29,5 +29,19 @@
     <string name="title_activity_base">Base</string>
     <string name="title_activity_splash">NightyBird</string>
     <string name="title_activity_reminder">Reminder</string>
+    <string name="sleep_button_text">Go to Sleep Now</string>
+    <string name="stayup_setting">Stayup Setting</string>
+    <string name="loading_report">Loading your daily report...</string>
+    <string name="daily_report_title">Do you have a good sleep yesterday?</string>
+    <string name="weekly_advice_loading">Weekly advice loading...</string>
+    <string name="go_to_sleep_early_text">Go to sleep early</string>
+    <string name="weekly_stat">Weekly Statistics</string>
+    <string name="report_title">Report</string>
+    <string name="advice_title">Advice</string>
+    <string name="reminder_text">Reminder</string>
+    <string name="history_title">History</string>
+    <string name="add_new">Add New</string>
+    <string name="close_reminder">Close Reminder</string>
+    <string name="go_to_sleep_early">Go to Sleep Early</string>
 
 </resources>

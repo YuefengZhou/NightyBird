@@ -131,7 +131,7 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
                 .commit();
 	}
 	
-	public void clickHandler_go_to_sleep (View v){
+	public void onClickGotoSleep (View v){
 		PreferenceManager.getInstance().checkinSleep();
     	Intent intent = new Intent(); 
     	intent.setClass(this, SleepActivity.class); 

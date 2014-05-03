@@ -37,11 +37,6 @@
             android:key="period"
             android:summary="Please set the period of reminder"
             android:title="Reminder Period" />
-        <EditTextPreference
-            android:defaultValue=""
-            android:key="starttime"
-            android:summary="When you goto sleep yesterday?"
-            android:title="Input a unix time, haha." />
     </PreferenceCategory>
 
     <PreferenceCategory

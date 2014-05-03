@@ -1,5 +1,6 @@
 package com.example.nightybird;
 
+import entities.PreferenceManager;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -100,6 +101,7 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 	}
 	
 	public void clickHandler_go_to_sleep (View v){
+		PreferenceManager.getInstance().checkinSleep();
     	Intent intent = new Intent(); 
     	intent.setClass(this, SleepActivity.class); 
     	startActivity(intent); 

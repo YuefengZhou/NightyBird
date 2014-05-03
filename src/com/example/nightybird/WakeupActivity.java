@@ -1,8 +1,15 @@
 package com.example.nightybird;
 
+import java.util.ArrayList;
+
+import entities.PreferenceManager;
+import entities.SleepData;
+import entities.SleepDataManager;
+import ws.local.ReportServiceClient;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
@@ -10,11 +17,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class WakeupActivity extends Activity
 implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 
 	private NavigationDrawerFragment mNavigationDrawerFragment;
+	
+	ArrayList<SleepData> sleepDataList = new ArrayList<SleepData>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +46,29 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 	                R.id.navigation_drawer,
 	                (DrawerLayout) findViewById(R.id.drawer_layout_wakeup));
 		}
+		
+		TextView greetingText = (TextView)findViewById(R.id.textViewGreeting);
+		greetingText.setText("Hi, " + PreferenceManager.getInstance().getUsername() + ", how are you doing today?");
+		
+		showAdvice();
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void showAdvice() {
+		ArrayList<SleepData> tmpList = SleepDataManager.getInstance().getAllSleepData();
+		
+		if (tmpList.size() < 1)
+			return;
+		
+		ArrayList<SleepData> oneDataList = new ArrayList<SleepData>();
+		
+		oneDataList.add(tmpList.get(tmpList.size()-1));
+		
+		TextView adviceText = (TextView)findViewById(R.id.textViewDailyReport);
+		ReportServiceClient client = new ReportServiceClient();
+		client.setTextViewToUpdate(adviceText);
+		client.execute(oneDataList);
 	}
 	
 	@Override
@@ -96,6 +129,14 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
         fragmentManager.beginTransaction()
                 .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
                 .commit();
+	}
+	
+	public void clickHandler_go_to_sleep (View v){
+		PreferenceManager.getInstance().checkinSleep();
+    	Intent intent = new Intent(); 
+    	intent.setClass(this, SleepActivity.class); 
+    	startActivity(intent); 
+    	this.finish();
 	}
 
 }

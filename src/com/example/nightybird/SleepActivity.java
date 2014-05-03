@@ -1,5 +1,6 @@
 package com.example.nightybird;
 
+import entities.PreferenceManager;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -96,6 +97,7 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 	}
 	
 	public void clickHandler_wakeup (View v){
+		PreferenceManager.getInstance().checkoutSleep();
     	Intent intent = new Intent(); 
     	intent.setClass(this, WakeupActivity.class); 
     	startActivity(intent); 

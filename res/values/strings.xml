@@ -15,19 +15,19 @@
     <string name="stay_up_late_setting_textview1">I am going to stay up until:</string>
     <string name="stay_up_late_setting_button1">Done</string>
     <string name="wakeup_button_text">I am waken up</string>
-    <string name="title_activity_wakeup">WakeupActivity</string>
+    <string name="title_activity_wakeup">Wakeup</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_sleep">Sleeping</string>
-    <string name="title_activity_stayup">Staying-up Late Now</string>
-    <string name="title_activity_stayup_setting">StayupSettingActivity</string>
+    <string name="title_activity_stayup">Staying-up-late Now</string>
+    <string name="title_activity_stayup_setting">Stay-up-late Setting</string>
     <string name="title_activity_edit_history">Edit History</string>
     <string name="title_activity_friends">Friends</string>
     <string name="title_activity_history">History</string>
     <string name="title_activity_report">Report</string>
     <string name="title_activity_setting">Setting</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_base">BaseActivity</string>
+    <string name="title_activity_base">Base</string>
     <string name="title_activity_splash">NightyBird</string>
-    <string name="title_activity_reminder">ReminderActivity</string>
+    <string name="title_activity_reminder">Reminder</string>
 
 </resources>

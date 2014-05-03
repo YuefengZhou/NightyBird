@@ -1,7 +1,11 @@
 package entities;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class PreferenceManager {
 	private static PreferenceManager instance = null;
@@ -51,5 +55,18 @@ public class PreferenceManager {
 	public void setContext(Context context) {
 		this.context = context;
 		sharedPref = android.preference.PreferenceManager.getDefaultSharedPreferences(context);
+	}
+	public void checkinSleep() {
+		Calendar c = Calendar.getInstance();
+		Date currentTime = c.getTime();
+		Editor ed = sharedPref.edit();
+		
+		ed.putString("starttime", Long.toString(currentTime.getTime()));
+		ed.commit();
+	}
+	public void checkoutSleep() {
+		Date sleepTime = new Date(Long.parseLong(sharedPref.getString("starttime", "0")));
+		Date wakeupTime = Calendar.getInstance().getTime();
+		SleepDataManager.getInstance().insertSleepData(new SleepData(sleepTime, wakeupTime));
 	}
 }

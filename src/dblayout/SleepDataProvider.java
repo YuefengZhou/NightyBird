@@ -19,11 +19,11 @@ import android.util.Log;
 public class SleepDataProvider extends ContentProvider {
 	static final String PROVIDER_NAME = "com.example.provider.SleepData";
 	static final String URL = "content://" + PROVIDER_NAME + "/sleepdata";
-	static final Uri CONTENT_URI = Uri.parse(URL);
+	public static final Uri CONTENT_URI = Uri.parse(URL);
 
-	static final String SLEEPDATAID = "SDID";
-	static final String STARTTIME = "StartTime";
-	static final String ENDTIME = "EndTime";
+	public static final String SLEEPDATAID = "SDID";
+	public static final String STARTTIME = "StartTime";
+	public static final String ENDTIME = "EndTime";
 
 	DBHelper dbHelper;
 

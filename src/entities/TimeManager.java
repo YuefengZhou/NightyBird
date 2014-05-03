@@ -5,15 +5,15 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import ws.local.StayupReminder;
 
 
 public class TimeManager {
 	final static boolean DEBUG_TIME = true;
 	
 	private static int requiredSleepHour = 23, requiredSleepMinute = 0; // the time user should go to sleep
-	private static TimeManager timeManager;
+	private static TimeManager timeManager = null;
 	public boolean sleepReminderStatus = false; // true means turn on; false turn off
 	private static Activity currentActivity;
 	
@@ -28,12 +28,11 @@ public class TimeManager {
 	TimerTask task;
 	
 
-	private void TimeManager() {
-		
+	private TimeManager() {
 	}
 	
 	public static void setStayupTimeThreshold ( int stayuplateThreshold ) {
-		requiredSleepHour = requiredSleepHour;
+		requiredSleepHour = stayuplateThreshold;
 		requiredSleepMinute = 0;
 	}
 
@@ -49,28 +48,7 @@ public class TimeManager {
 	{
 		int currentHour = getHourFromDate (currentDate);
 		int currentMinute = getMinuteFromDate (currentDate);
-		
-		/*
-		if ( currentHour < daytimeStart) {
-			// e.g. current date 02:10, required date 22:00
-			currentHour += 24;
-		}
-		if ( requiredSleepHour < daytimeStart ) {
-			// e.g. current date 23:10, required date 03:00
-			currentHour -= 24;
-		}
-		
-		// compare current time and required sleep time
-		if ( currentHour > requiredSleepHour ) {
-			// e.g. current date 23:10, required date 22:00
-			return true;
-		} else if (currentHour == requiredSleepHour) {
-			if (currentMinute > requiredSleepMinute) {
-				// e.g. current date 23:10, required date 23:00
-				return true;
-			}
-		}
-		*/
+
 		if ( currentHour == requiredSleepHour && currentMinute == requiredSleepMinute){
 			return true;
 		} else {
@@ -102,11 +80,13 @@ public class TimeManager {
 		return false;
 	}
 	
+	@SuppressLint("SimpleDateFormat")
 	public static int getHourFromDate(Date date){
 		SimpleDateFormat dateFormat = new SimpleDateFormat("HH");
 		return Integer.parseInt(dateFormat.format(date));
 	}
 	
+	@SuppressLint("SimpleDateFormat")
 	public static int getMinuteFromDate(Date date){
 		SimpleDateFormat dateFormat = new SimpleDateFormat("mm");
 		return Integer.parseInt(dateFormat.format(date));

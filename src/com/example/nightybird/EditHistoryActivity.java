@@ -3,9 +3,8 @@ package com.example.nightybird;
 import java.util.Calendar;
 import java.util.Date;
 
-import dblayout.SleepData;
+import entities.SleepData;
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
-import android.os.Build;
 
 public class EditHistoryActivity extends Activity {
 
@@ -45,12 +43,6 @@ public class EditHistoryActivity extends Activity {
 		if (sleepData != null) {
 			sdid = sleepData.getSdid();
 			
-//			Debugger.printDate(this, sleepData.getStart());
-//			Debugger.printDate(this, sleepData.getEnd());
-			
-//			Debugger.makeToast(this, Integer.toString(sleepData.getStart().getMonth() + 1));
-//			Debugger.makeToast(this, Integer.toString(sleepData.getStart().getDate()));
-			
 			datePicker.updateDate(sleepData.getStart().getYear() + 1900, sleepData.getStart().getMonth(), sleepData.getStart().getDate());
 			
 			timePicker1.setCurrentHour(sleepData.getStart().getHours());
@@ -58,8 +50,6 @@ public class EditHistoryActivity extends Activity {
 			
 			timePicker2.setCurrentHour(sleepData.getEnd().getHours());
 			timePicker2.setCurrentMinute(sleepData.getEnd().getMinutes());
-		} else {
-			//TODO: set a default time and date
 		}
 	}
 
@@ -100,17 +90,6 @@ public class EditHistoryActivity extends Activity {
 		}
 	}
 	
-	private Date getDateFromDatePicker(DatePicker datePicker){
-	    int day = datePicker.getDayOfMonth();
-	    int month = datePicker.getMonth();
-	    int year =  datePicker.getYear();
-
-	    Calendar calendar = Calendar.getInstance();
-	    calendar.set(year, month, day);
-	    
-	    return calendar.getTime();
-	}
-	
 	private Date getDateFromTimePicker(DatePicker datePicker, TimePicker timePicker) {
 		int day = datePicker.getDayOfMonth();
 	    int month = datePicker.getMonth();
@@ -124,17 +103,17 @@ public class EditHistoryActivity extends Activity {
 	    return calendar.getTime();
 	}
 	
+	/* do nothing and return when back is pressed */
 	public void onBackPressed() {
 		setResult(Activity.RESULT_CANCELED, new Intent());
 		finish();
 	}
 	
+	/* return result to history activity when ok button is clicked */
 	public void onOKButtonClick(View v) {
 		DatePicker datePicker = (DatePicker)findViewById(R.id.datePicker);
 		TimePicker timePicker1 = (TimePicker)findViewById(R.id.timePicker1);
 		TimePicker timePicker2 = (TimePicker)findViewById(R.id.timePicker2);
-		
-		//TODO: validity check for timepickers
 		
 		SleepData sleepData = new SleepData(sdid, getDateFromTimePicker(datePicker, timePicker1), getDateFromTimePicker(datePicker, timePicker2));
 		
@@ -144,7 +123,6 @@ public class EditHistoryActivity extends Activity {
 		resultIntent.putExtras(b); 
 		setResult(Activity.RESULT_OK, resultIntent);
 		finish();
-		
 	}
 
 }

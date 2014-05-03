@@ -12,10 +12,9 @@ import org.achartengine.renderer.SimpleSeriesRenderer;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 
 import ws.local.ReportServiceClient;
-import dblayout.SleepData;
-import dblayout.SleepDataManager;
+import entities.SleepData;
+import entities.SleepDataManager;
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.graphics.Color;
@@ -30,7 +29,6 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.os.Build;
 
 public class ReportActivity extends Activity 
 implements NavigationDrawerFragment.NavigationDrawerCallbacks{
@@ -41,17 +39,15 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 	
 	ArrayList<SleepData> sleepDataList = null;
     
-    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_report);
 
-		/*
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
-		}*/
+		}
 		// Set up the drawer
 		mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -63,21 +59,24 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 		}
 		
 		showRangeChart();
+		showAdvice();
 		
-		TextView adviceText = (TextView)findViewById(R.id.weeklyAdviceTextView);
-//		ArrayList<SleepData> oneDayList = new ArrayList<SleepData>();
-//		oneDayList.add(sleepDataList.get(0));
-		ReportServiceClient client = new ReportServiceClient();
-		client.setTextViewToUpdate(adviceText);
-		client.execute(sleepDataList);
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
 		showRangeChart();
+		showAdvice();
 	}
 	
+	@SuppressWarnings("unchecked")
+	private void showAdvice() {
+		TextView adviceText = (TextView)findViewById(R.id.weeklyAdviceTextView);
+		ReportServiceClient client = new ReportServiceClient();
+		client.setTextViewToUpdate(adviceText);
+		client.execute(sleepDataList);
+	}
 	private boolean showRangeChart() {
 	    sleepDataList = SleepDataManager.getInstance().getAllSleepData();
 	    

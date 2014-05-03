@@ -1,8 +1,7 @@
 package com.example.nightybird;
 
-import ws.local.StayupReminder;
+import entities.StayupReminder;
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,8 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.TimePicker;
-import android.os.Build;
 
 public class ReminderActivity extends Activity {
 
@@ -27,7 +24,7 @@ public class ReminderActivity extends Activity {
 		}
 		
 		TextView reminderDisplay = (TextView) findViewById(R.id.reminderMessage);
-		String reminderText = StayupReminder.getReminderMessage();
+		String reminderText = StayupReminder.getInstance().getReminderMessage();
 		if ( reminderText!= null) {
 			reminderDisplay.setText(reminderText);
 		}

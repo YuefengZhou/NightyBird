@@ -5,13 +5,13 @@ import java.text.SimpleDateFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import ws.local.StayupReminder;
-import dblayout.SleepData;
-import dblayout.SleepDataManager;
 import entities.PreferenceManager;
+import entities.SleepData;
+import entities.SleepDataManager;
+import entities.StayupReminder;
 import entities.TimeManager;
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +20,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 
 public class SplashActivity extends Activity {
 	private static Intent initialJumpIntent;
@@ -39,6 +38,7 @@ public class SplashActivity extends Activity {
 		}
 	}
 	
+	@SuppressLint("SimpleDateFormat")
 	@Override
     protected void onStart() {
         super.onStart();

@@ -1,6 +1,6 @@
 package entities;
 
-/* left for extension */
+/* left for future extension */
 public abstract class Report {
-
+	public abstract String getReportText();
 }

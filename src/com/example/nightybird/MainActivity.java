@@ -56,6 +56,18 @@ public class MainActivity extends Activity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
         
+        // Jump to sleep or wakeup page based on time
+        System.out.println ("main: before jump to other activity");
+        TimeManager timeManager = TimeManager.getInstance(this);
+        Intent initialJumpIntent = new Intent(); 
+        if (timeManager.isDaylight()){
+        	initialJumpIntent.setClass(this, WakeupActivity.class);
+        } else {
+        	initialJumpIntent.setClass(this, StayupActivity.class);
+        }
+        
+        startActivity(initialJumpIntent);
+        this.finish(); 
     }
     
     @Override
@@ -98,21 +110,7 @@ public class MainActivity extends Activity
 	@Override
     protected void onStart() {
         super.onStart();
-        
-        // Jump to sleep or wakeup page based on time
-        System.out.println ("main: before jump to other activity");
-        TimeManager timeManager = new TimeManager();
-        Intent initialJumpIntent = new Intent(); 
-        if (timeManager.isDaylight()){
-        	initialJumpIntent.setClass(this, WakeupActivity.class);
-        } else {
-        	initialJumpIntent.setClass(this, StayupActivity.class);
-        }
-        
-        startActivity(initialJumpIntent);
-        this.finish();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

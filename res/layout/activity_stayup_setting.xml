@@ -40,7 +40,8 @@
                 android:layout_height="76dp"
                 android:text="Done"
                 android:onClick="clickHandler_stayup_setting_done" />
-
+			
+            <!--  
             <Button
                 android:id="@+id/button2"
                 android:layout_width="120dp"
@@ -48,6 +49,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="Cancel"
                 android:onClick="clickHandler_stayup_setting_cancel" />
+            -->
 
         </LinearLayout>
 

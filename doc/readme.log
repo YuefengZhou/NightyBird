@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.20)  2 MAY 2014 20:12
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.20)  2 MAY 2014 21:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -170,35 +170,58 @@ Chapter 3.
 Chapter 4.
 [5
 
-] [6] [7]
+] [6]
+Overfull \hbox (9.48723pt too wide) in paragraph at lines 71--73
+\OT1/cmr/m/n/14.4 domain:[Port Num]/NightyBird[]Server/daily?start=[Date]&end=[
+Date] 
+ []
+
+
+Overfull \hbox (34.55359pt too wide) in paragraph at lines 74--79
+\OT1/cmr/m/n/14.4 domain:[Port Num]/NightyBird[]Server/weekly?start1=[Date]&end
+1=[Date] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--79
+
+ []
+
+[7] [8]
 Chapter 5.
-[8
+[9
 
-] [9] [10]
+] [10] [11]
 Chapter 6.
-[11
+[12
 
-] [12]
+] [13]
 Chapter 7.
-[13
 
-] (./readme.aux) ) 
+Overfull \hbox (12.27068pt too wide) in paragraph at lines 125--126
+\OT1/cmr/m/n/14.4 Start View is con-trolled in SplashAc-tiv-ity. When the app r
+uns, SplashAc-
+ []
+
+[14
+
+] [15] (./readme.aux) ) 
 Here is how much of TeX's memory you used:
- 1563 strings out of 493315
- 24359 string characters out of 6137904
+ 1564 strings out of 493315
+ 24377 string characters out of 6137904
  78920 words of memory out of 5000000
- 5022 multiletter control sequences out of 15000+600000
+ 5023 multiletter control sequences out of 15000+600000
  5933 words of font info for 22 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 37i,5n,23p,514b,244s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmtt12.pfb>
-Output written on readme.pdf (14 pages, 64978 bytes).
+ 37i,5n,23p,459b,244s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2013/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmtt12.pfb>
+Output written on readme.pdf (16 pages, 68428 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
- 43 compressed objects within 1 object stream
+ 71 PDF objects out of 1000 (max. 8388607)
+ 47 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

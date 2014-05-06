@@ -44,12 +44,15 @@ public class MainActivity extends Activity
         
         // Jump to sleep or wakeup page based on time
         System.out.println ("main: before jump to other activity");
-        TimeManager timeManager = TimeManager.getInstance(this);
+        TimeManager timeManager = TimeManager.getInstance();
         Intent initialJumpIntent = new Intent(); 
-        if (timeManager.isDaylight()){
+        int status = timeManager.getStatus();
+        if (status == TimeManager.WAKEUP){
         	initialJumpIntent.setClass(this, WakeupActivity.class);
-        } else {
+        } else if (status == TimeManager.STAYUP){
         	initialJumpIntent.setClass(this, StayupActivity.class);
+        } else {
+        	initialJumpIntent.setClass(this, SleepActivity.class);
         }
         
         startActivity(initialJumpIntent);

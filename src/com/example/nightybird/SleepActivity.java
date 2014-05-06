@@ -1,6 +1,8 @@
 package com.example.nightybird;
 
 import entities.PreferenceManager;
+import entities.Reminder;
+import entities.TimeManager;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -37,6 +39,8 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 	                R.id.navigation_drawer,
 	                (DrawerLayout) findViewById(R.id.drawer_layout_sleep));
 		}
+		
+		PreferenceManager.getInstance().setReminderStatus(false);
         
 	}
 
@@ -97,6 +101,7 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 	}
 	
 	public void onClickWakeup (View v){
+		TimeManager.getInstance().userWakeup();
 		PreferenceManager.getInstance().checkoutSleep();
     	Intent intent = new Intent(); 
     	intent.setClass(this, WakeupActivity.class); 

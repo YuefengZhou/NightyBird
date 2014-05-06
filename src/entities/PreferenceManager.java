@@ -24,33 +24,17 @@ public class PreferenceManager {
 	public int getStayupThreshold() {
 		return Integer.parseInt(sharedPref.getString("threshold", "23"));
 	}
-	public void setStayupThreshold(int stayupThreshold) {
-		sharedPref.edit().putString("threshold", Integer.toString(stayupThreshold));
-		sharedPref.edit().commit();
-	}
 	public int getRemindPeriod() {
 		return Integer.parseInt(sharedPref.getString("period", "30"));
 	}
-	public void setRemindPeriod(int remindPeriod) {
-		sharedPref.edit().putString("period", Integer.toString(remindPeriod));
-		sharedPref.edit().commit();
-	}
 	public String getUsername() {
 		return sharedPref.getString("name", "Darling");
-	}
-	public void setUsername(String username) {
-		sharedPref.edit().putString("name", username);
-		sharedPref.edit().commit();
 	}
 	public String getReportServiceAddress() {
 		return sharedPref.getString("service_address", "");
 	}
 	public String getGender() {
 		return sharedPref.getString("gender", "male");
-	}
-	public void setGender(String gender) {
-		sharedPref.edit().putString("gender", gender);
-		sharedPref.edit().commit();
 	}
 	public void setContext(Context context) {
 		this.context = context;
@@ -68,5 +52,13 @@ public class PreferenceManager {
 		Date sleepTime = new Date(Long.parseLong(sharedPref.getString("starttime", "0")));
 		Date wakeupTime = Calendar.getInstance().getTime();
 		SleepDataManager.getInstance().insertSleepData(new SleepData(sleepTime, wakeupTime));
+	}
+	public void setReminderStatus(boolean status) {
+		Editor ed = sharedPref.edit();
+		ed.putString("reminderstatus", Boolean.toString(status));
+		ed.commit();
+	}
+	public boolean getReminderStatus() {
+		return Boolean.parseBoolean(sharedPref.getString("reminderstatus", "true"));
 	}
 }

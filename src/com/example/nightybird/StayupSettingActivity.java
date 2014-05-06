@@ -1,5 +1,6 @@
 package com.example.nightybird;
 
+import entities.Reminder;
 import entities.StayupReminder;
 import entities.TimeManager;
 import android.app.Activity;
@@ -85,11 +86,8 @@ public class StayupSettingActivity extends Activity {
 		System.out.println("timeLeftForReminder: (minutes) " + timeLeftForReminder);
 		String setFeedback = null;
 		if ( timeLeftForReminder >= 0 ){
-			System.out.println("set reminder"); 
-			StayupReminder reminder = StayupReminder.getInstance();
-			reminder.initiate(this, "Time up to sleep");
-			setFeedback = "Reminder started successfully";
-			reminder.startStayuplateReminder(timeLeftForReminder); // minutes
+			Reminder.getInstance().setDelay(timeLeftForReminder);
+			
 		} else {
 			setFeedback = "Time left is " + timeLeftForReminder + ". Failed to set the reminder. Reminding Time should be less than 12 hours from now.";
 		}
@@ -98,14 +96,15 @@ public class StayupSettingActivity extends Activity {
 		AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
         builder1.setMessage(setFeedback);
         builder1.setCancelable(true);
-        builder1.setNegativeButton("OK",
+        builder1.setNegativeButton("Reminder closed temporarily",
                 new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
+                finish();
             }
         });
         AlertDialog alert1 = builder1.create();
         alert1.show();
-
+        
 	}
 }

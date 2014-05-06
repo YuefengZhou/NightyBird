@@ -1,83 +1,76 @@
 package entities;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 
 
 public class TimeManager {
 	final static boolean DEBUG_TIME = true;
+	public final static int SLEEP = 0;
+	public final static int WAKEUP = 1;
+	public final static int STAYUP = 2;
 	
-	private static int requiredSleepHour = 23, requiredSleepMinute = 0; // the time user should go to sleep
+	private int requiredSleepHour = 23; // the default time user should go to sleep
 	private static TimeManager timeManager = null;
-	public boolean sleepReminderStatus = false; // true means turn on; false turn off
-	private static Activity currentActivity;
+	private  Context context;
+	private boolean userSleeping;
 	
 	// start from 08:00 daytimeStart should < 12 (noon)
-	public static int daytimeStart = 8; 
+	public final static int daytimeStart = 8; 
 	
 	// start from 20:00. nighttimeStart should > 12 (noon)
-	public static int nighttimeStart = 20;
+	public final static int nighttimeStart = 20;
 	
 	// timer and task for sleep monitor
 	Timer timer;
 	TimerTask task;
-	
 
 	private TimeManager() {
 	}
 	
-	public static void setStayupTimeThreshold ( int stayuplateThreshold ) {
+	public void setStayupTimeThreshold ( int stayuplateThreshold ) {
+		System.out.println("Set requiredSleepHour to: " + stayuplateThreshold);
 		requiredSleepHour = stayuplateThreshold;
-		requiredSleepMinute = 0;
 	}
 
-	public static TimeManager getInstance(Activity activity) {
+	public static TimeManager getInstance() {
 		if ( timeManager == null ) {
 			timeManager = new TimeManager();
 		}
-		currentActivity = activity;
 		return timeManager;
 	}
 	
-	public static boolean isSleepTime(Date currentDate)
-	{
-		int currentHour = getHourFromDate (currentDate);
-		int currentMinute = getMinuteFromDate (currentDate);
-
-		if ( currentHour == requiredSleepHour && currentMinute == requiredSleepMinute){
-			return true;
-		} else {
-			return false;
+	public int getStatus() {
+		Calendar c = Calendar.getInstance();
+		int currentHour = c.get(Calendar.HOUR_OF_DAY);
+		System.out.println("REQUIRED SLEEP HOUR: " + requiredSleepHour);
+		if (requiredSleepHour < 12) { //after midnight
+			if (userSleeping)
+				return TimeManager.SLEEP;
+			else if (currentHour >= requiredSleepHour && currentHour < daytimeStart) {
+				System.out.println("Staying up");
+				return TimeManager.STAYUP;
+			}
+			else 
+				return TimeManager.WAKEUP;
 		}
-	}
-	
-	public boolean isNight() {
-		int hour = getCurrentHour();
-		if (DEBUG_TIME) System.out.println("isNight: currenthour:" + hour);
-		
-		if ( hour >= nighttimeStart ||  hour < daytimeStart){
-			if (DEBUG_TIME) System.out.println("isnight: true");
-			return true;
+		else {
+			if (userSleeping)
+				return TimeManager.SLEEP;
+			else if (currentHour >= requiredSleepHour || currentHour < daytimeStart) {
+				System.out.println("Staying up");
+				return TimeManager.STAYUP;
+			}
+			else
+				return TimeManager.WAKEUP;
 		}
-		if (DEBUG_TIME)  System.out.println("isnight: false");
-		return false;
-	}
-	
-	public boolean isDaylight() {
-		int hour = getCurrentHour();
-		if (DEBUG_TIME) System.out.println("isDaylight: currenthour:" + hour);
-		
-		if ( hour >= daytimeStart && hour < nighttimeStart ){
-			if (DEBUG_TIME) System.out.println("isDaylight: true");
-			return true;
-		}
-		if (DEBUG_TIME) System.out.println("isDaylight: false");
-		return false;
 	}
 	
 	@SuppressLint("SimpleDateFormat")
@@ -102,35 +95,56 @@ public class TimeManager {
 		return getMinuteFromDate(currentDate);
 	}
 	
-	public void startSleepMonitor () {
-		sleepReminderStatus = true;
-		timer = new Timer();
-		task = new TimerTask() {
-	    	int timeCounter = 0;
-	    	@Override
-	        public void run() { 
-	    		if (timeCounter > 0) {
-	    			timeCounter--;
-	    		} else {
-	    			if ( sleepReminderStatus && TimeManager.isSleepTime (new Date()) 
-	    					&& (StayupReminder.stayupReminderStatus == false) ){
-	    				timeCounter = 60;
-	    				StayupReminder reminder = StayupReminder.getInstance();
-	    				reminder.initiate(currentActivity, "Time up to sleep");
-	    				reminder.startReminder(0); // 1 minutes
-	    			}
-	    		}
-	        }
-	    };
-	    timer.schedule(task, 10*1000, 10*1000);	// check every 20 seconds
+//	public void startSleepMonitor () {
+//		timer = new Timer();
+//		task = new TimerTask() {
+//	    	int timeCounter = 0;
+//	    	@Override
+//	        public void run() { 
+//	    		if (timeCounter > 0) {
+//	    			timeCounter--;
+//	    		} else {
+//	    			if (TimeManager.getInstance().getStatus() == TimeManager.STAYUP
+//	    					&& (StayupReminder.stayupReminderStatus == false) ){
+//	    				timeCounter = 60;
+//	    				StayupReminder reminder = StayupReminder.getInstance();
+//	    				reminder.initiate(context, "Time to sleep");
+//	    				reminder.startReminder(0); // 1 minutes
+//	    			}
+//	    		}
+//	        }
+//	    };
+//	    timer.schedule(task, 10*1000, 10*1000);	// check every 20 seconds
+//	}
+//	
+//	public void closeSleepMonitor (){
+//		if (timer!=null){
+//			timer.cancel();
+//			task.cancel();
+//		}
+//	}
+	public int calDelay() {
+		Calendar c = Calendar.getInstance();
+		int currentHour = c.get(Calendar.HOUR_OF_DAY);
+		int currentMinute = c.get(Calendar.MINUTE);
+		
+		int targetHour = requiredSleepHour;
+		if (requiredSleepHour < 12)
+			targetHour += 24;
+		if (currentHour < 12)
+			currentHour += 24;
+		return (targetHour - currentHour) * 60 - currentMinute;
 	}
-	
-	public void closeSleepMonitor (){
-		if (timer!=null){
-			timer.cancel();
-			task.cancel();
-			sleepReminderStatus = false;
-		}
+	public void userSleeping() {
+		this.userSleeping = true;
 	}
-	
+	public void userWakeup() {
+		this.userSleeping = false;
+	}
+	public Context getContext() {
+		return context;
+	}
+	public void setContext(Context context) {
+		this.context = context;
+	}
 }

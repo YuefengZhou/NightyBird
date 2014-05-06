@@ -1,5 +1,7 @@
 package com.example.nightybird;
 
+import entities.PreferenceManager;
+import entities.Reminder;
 import entities.StayupReminder;
 import android.app.Activity;
 import android.app.Fragment;
@@ -24,7 +26,7 @@ public class ReminderActivity extends Activity {
 		}
 		
 		TextView reminderDisplay = (TextView) findViewById(R.id.reminderMessage);
-		String reminderText = StayupReminder.getInstance().getReminderMessage();
+		String reminderText = Reminder.reminderMessage;
 		if ( reminderText!= null) {
 			reminderDisplay.setText(reminderText);
 		}
@@ -68,9 +70,7 @@ public class ReminderActivity extends Activity {
 	}
 	
 	public void clickHandler_close_reminder(View v){
-		StayupReminder reminder = StayupReminder.getInstance() ;
-		reminder.update(this);
-		reminder.closeReminder();
+		PreferenceManager.getInstance().setReminderStatus(false);
 	}
 
 }

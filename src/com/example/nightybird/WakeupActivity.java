@@ -3,8 +3,10 @@ package com.example.nightybird;
 import java.util.ArrayList;
 
 import entities.PreferenceManager;
+import entities.Reminder;
 import entities.SleepData;
 import entities.SleepDataManager;
+import entities.TimeManager;
 import ws.local.ReportServiceClient;
 import android.app.Activity;
 import android.app.Fragment;
@@ -46,6 +48,9 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 	                R.id.navigation_drawer,
 	                (DrawerLayout) findViewById(R.id.drawer_layout_wakeup));
 		}
+			
+		Reminder.getInstance().setDelay(TimeManager.getInstance().calDelay());
+		PreferenceManager.getInstance().setReminderStatus(true);
 		
 		TextView greetingText = (TextView)findViewById(R.id.textViewGreeting);
 		greetingText.setText("Hi, " + PreferenceManager.getInstance().getUsername() + ", how are you doing today?");
@@ -133,6 +138,7 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 	
 	public void onClickGotoSleep (View v){
 		PreferenceManager.getInstance().checkinSleep();
+		TimeManager.getInstance().userSleeping();
     	Intent intent = new Intent(); 
     	intent.setClass(this, SleepActivity.class); 
     	startActivity(intent); 

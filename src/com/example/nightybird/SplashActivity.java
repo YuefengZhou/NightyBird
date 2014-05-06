@@ -6,6 +6,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import entities.PreferenceManager;
+import entities.Reminder;
 import entities.SleepData;
 import entities.SleepDataManager;
 import entities.StayupReminder;
@@ -64,14 +65,19 @@ public class SplashActivity extends Activity {
         PreferenceManager preferenceManager = PreferenceManager.getInstance();
         preferenceManager.setContext(this);
         
+        //temp
+        PreferenceManager.getInstance().setReminderStatus(true);
+        
         // set reminderInterval in StayupReminder
-        StayupReminder reminder = StayupReminder.getInstance();
-        reminder.setReminderInterval(preferenceManager.getRemindPeriod());
+        Reminder.getInstance().setPeriod(preferenceManager.getRemindPeriod());
+        Reminder.getInstance().setContext(this);
+        Reminder.getInstance().setDelay(Integer.MAX_VALUE);
+        Reminder.getInstance().start();
         
         // set sleepMonitor TimeManager
-        TimeManager timeManager =  TimeManager.getInstance(this);
-        TimeManager.setStayupTimeThreshold(preferenceManager.getStayupThreshold());
-        timeManager.startSleepMonitor();
+        TimeManager timeManager =  TimeManager.getInstance();
+        timeManager.setContext(this);
+        timeManager.setStayupTimeThreshold(preferenceManager.getStayupThreshold());
         
 		// SleepDataManager is used to read and set sleep data
         SleepDataManager sleepDataManager = SleepDataManager.getInstance();

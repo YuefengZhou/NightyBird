@@ -28,10 +28,10 @@ public class EditHistoryActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_history);
 
-		if (savedInstanceState == null) {
-			getFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
+//		if (savedInstanceState == null) {
+//			getFragmentManager().beginTransaction()
+//					.add(R.id.container, new PlaceholderFragment()).commit();
+//		}
 		
 		datePicker = (DatePicker)findViewById(R.id.datePicker);
 		timePicker1 = (TimePicker)findViewById(R.id.timePicker1);

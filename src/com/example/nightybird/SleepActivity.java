@@ -1,7 +1,6 @@
 package com.example.nightybird;
 
 import entities.PreferenceManager;
-import entities.Reminder;
 import entities.TimeManager;
 import android.app.Activity;
 import android.app.Fragment;

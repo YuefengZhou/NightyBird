@@ -42,10 +42,10 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_history);
 
-		if (savedInstanceState == null) {
-			getFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
+//		if (savedInstanceState == null) {
+//			getFragmentManager().beginTransaction()
+//					.add(R.id.container, new PlaceholderFragment()).commit();
+//		}
 
 		// Set up the drawer
 		mNavigationDrawerFragment = (NavigationDrawerFragment)

@@ -25,7 +25,7 @@ public class Reminder {
 	private Reminder() {
 
 	}
-	public synchronized void start() {
+	public void start() {
 		timer = new Timer();
 		task = new TimerTask() {
 			int count = 0;

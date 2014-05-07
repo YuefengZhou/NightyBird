@@ -9,7 +9,6 @@ import entities.PreferenceManager;
 import entities.Reminder;
 import entities.SleepData;
 import entities.SleepDataManager;
-import entities.StayupReminder;
 import entities.TimeManager;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -66,7 +65,7 @@ public class SplashActivity extends Activity {
         preferenceManager.setContext(this);
         
         //temp
-        PreferenceManager.getInstance().setReminderStatus(true);
+//        PreferenceManager.getInstance().setReminderStatus(true);
         
         // set reminderInterval in StayupReminder
         Reminder.getInstance().setPeriod(preferenceManager.getRemindPeriod());
@@ -89,17 +88,17 @@ public class SplashActivity extends Activity {
     			sleepDataManager.insertSleepData( new SleepData
     					(format.parse("2014-04-26 23:55"), format.parse("2014-04-26 6:30") ));
     			sleepDataManager.insertSleepData( new SleepData
-    	        		(format.parse("2014-04-26 23:58"), format.parse("2014-04-27 6:02") ));
+    	        		(format.parse("2014-04-27 23:58"), format.parse("2014-04-28 6:02") ));
     	        sleepDataManager.insertSleepData( new SleepData
     	        		(format.parse("2014-04-28 00:13"), format.parse("2014-04-28 6:07") ));
     	        sleepDataManager.insertSleepData( new SleepData
-    	        		(format.parse("2014-04-28 23:58"), format.parse("2014-04-29 5:45") ));
+    	        		(format.parse("2014-04-29 23:58"), format.parse("2014-04-29 5:45") ));
     	        sleepDataManager.insertSleepData( new SleepData
     	        		(format.parse("2014-04-30 00:15"), format.parse("2014-04-30 6:21") ));
     	        sleepDataManager.insertSleepData( new SleepData
     	        		(format.parse("2014-05-01 01:22"), format.parse("2014-05-01 7:22") ));
     	        sleepDataManager.insertSleepData( new SleepData
-    	        		(format.parse("2014-05-01 23:22"), format.parse("2014-05-02 6:10") ));
+    	        		(format.parse("2014-05-02 23:22"), format.parse("2014-05-02 6:10") ));
     	        System.out.println ("main: set sleep data");
     		} catch (ParseException e) {
     			// TODO Auto-generated catch block

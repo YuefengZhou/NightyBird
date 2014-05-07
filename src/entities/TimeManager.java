@@ -7,7 +7,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 
 
@@ -23,7 +22,7 @@ public class TimeManager {
 	private boolean userSleeping;
 	
 	// start from 08:00 daytimeStart should < 12 (noon)
-	public final static int daytimeStart = 8; 
+	public final static int daytimeStart = 6; 
 	
 	// start from 20:00. nighttimeStart should > 12 (noon)
 	public final static int nighttimeStart = 20;
@@ -95,34 +94,6 @@ public class TimeManager {
 		return getMinuteFromDate(currentDate);
 	}
 	
-//	public void startSleepMonitor () {
-//		timer = new Timer();
-//		task = new TimerTask() {
-//	    	int timeCounter = 0;
-//	    	@Override
-//	        public void run() { 
-//	    		if (timeCounter > 0) {
-//	    			timeCounter--;
-//	    		} else {
-//	    			if (TimeManager.getInstance().getStatus() == TimeManager.STAYUP
-//	    					&& (StayupReminder.stayupReminderStatus == false) ){
-//	    				timeCounter = 60;
-//	    				StayupReminder reminder = StayupReminder.getInstance();
-//	    				reminder.initiate(context, "Time to sleep");
-//	    				reminder.startReminder(0); // 1 minutes
-//	    			}
-//	    		}
-//	        }
-//	    };
-//	    timer.schedule(task, 10*1000, 10*1000);	// check every 20 seconds
-//	}
-//	
-//	public void closeSleepMonitor (){
-//		if (timer!=null){
-//			timer.cancel();
-//			task.cancel();
-//		}
-//	}
 	public int calDelay() {
 		Calendar c = Calendar.getInstance();
 		int currentHour = c.get(Calendar.HOUR_OF_DAY);

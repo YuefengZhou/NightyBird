@@ -20,10 +20,11 @@ import entities.PreferenceManager;
 import entities.SleepData;
 
 public class ReportServiceClient extends AsyncTask<ArrayList<SleepData>, Void, String> {
-	private String ServerIP = PreferenceManager.getInstance().getReportServiceAddress();
+	private String ServerIP;
 	private TextView textViewToUpdate;
 	
 	public String getDailyReport(SleepData sleepData) {
+		ServerIP = PreferenceManager.getInstance().getReportServiceAddress();
 		return getReport(ServerIP + "daily?username=" + PreferenceManager.getInstance().getUsername()
 										+ "&start=" + sleepData.getStart().getTime()
 										+ "&end=" + sleepData.getEnd().getTime());
@@ -33,6 +34,7 @@ public class ReportServiceClient extends AsyncTask<ArrayList<SleepData>, Void, S
 		if (sleepDataList.size() < 7)
 			return null;
 		
+		ServerIP = PreferenceManager.getInstance().getReportServiceAddress();
 		StringBuffer uri = new StringBuffer(ServerIP);
 		uri.append("weekly?username=");
 		uri.append(PreferenceManager.getInstance().getUsername());
@@ -70,12 +72,17 @@ public class ReportServiceClient extends AsyncTask<ArrayList<SleepData>, Void, S
 				return null;
 			}
 			String result = convertStreamToString(is);
+			System.out.println(result);
 			try {
 				myObject = new JSONObject(result);
 			} catch (JSONException e) {
 				e.printStackTrace();
 				return null;
 			}
+		}
+		else {
+			System.out.println("RETURN CODE:" + code);
+			return null;
 		}
 		try {
 			return myObject.getString("report");

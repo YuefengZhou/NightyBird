@@ -270,5 +270,24 @@ Start View is controlled in SplashActivity. When the app runs, SplashActivity is
 \section{Debugger}
 We have a debugger class that makes toast anywhere we want. We use this to debug our application.
 
+\chapter{Requirement Document}
+We basically follow all requirements documented before. 
+
+\chapter{Tests}
+We have made test cases to test our application.
+
+\begin{itemize}
+\item We set different time on our tablet to test whether it displays stay-up-late activity correct.
+\item We check in sleep and check out sleep in both wake-up activity and stay-up-late activity, it goes into sleep activity. Then we click wake up button, it returns to wake-up activity. After this, we navigate to history page and a new entry created.
+\item We go to history activity and find several sleep data items. We try to create, edit and delete and these operations are done correctly.
+\item We have also tested our reminder. We set our stay-up-late threshold to 23:00 and we tune the time on Nexus to 22:59. We wait for a minute, it reminds us to sleep. Then we wait for 2 minutes which is the period for our reminder. The reminder appears again.
+\item We test the stay-up-late setting features by setting up time there. Before this time, no more reminder appears and after that the reminder comes up again.
+\item We test our report web service by going to wake-up activity. When the network is connected and server is started, it will display advices from the server. Otherwise, it will tell the user about the network problem.
+\item We go to report page to test our weekly report. It displays a range chart for the last sevens. If amount of data is not sufficient, the chart will not display. Below it, a weekly advice is displayed. 
+\end{itemize}
+
+
+\chapter{Business Model Framework}
+Please refer to final\_xlei\_yuefengz\_business\_model\_canvas\_poster.pdf
 
 \end{document}
